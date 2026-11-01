@@ -4,8 +4,8 @@ Responsible for human safety rating collection, survey analysis, and
 ground truth targets for ANFIS/GA optimization. (Owner C)
 """
 
-from pathlib import Path
 import csv
+from pathlib import Path
 
 
 def hello_survey() -> str:

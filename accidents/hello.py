@@ -4,8 +4,8 @@ Responsible for clustering historical accident data into hotspots (FCM / DBSCAN)
 and training accident risk neural networks (MLP vs Logistic Regression). (Owner B)
 """
 
-from pathlib import Path
 import csv
+from pathlib import Path
 
 
 def hello_accidents() -> str:

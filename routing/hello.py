@@ -4,8 +4,8 @@ Responsible for OSM graph handling (OSMnx), multi-route generation
 (OSRM / k-shortest paths), length-weighted safety aggregation, and route ranking. (Owner D)
 """
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 
 def hello_routing() -> str:
