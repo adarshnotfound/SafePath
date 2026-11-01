@@ -1,0 +1,10 @@
+detection_id,drive_id,frame_id,class,confidence,bbox,lat,lon,timestamp,is_simulated
+det_001,drive_01,frame_0012,pothole,0.88,"[120, 240, 180, 310]",12.97160,77.59460,2026-11-01T10:00:12Z,True
+det_002,drive_01,frame_0045,speed_breaker,0.92,"[300, 150, 350, 480]",12.97210,77.59510,2026-11-01T10:00:45Z,True
+det_003,drive_01,frame_0089,animal,0.76,"[180, 210, 260, 290]",12.97305,77.59600,2026-11-01T10:01:29Z,True
+det_004,drive_01,frame_0110,pothole,0.64,"[210, 310, 270, 390]",12.97380,77.59685,2026-11-01T10:01:50Z,True
+det_005,drive_02,frame_0015,pothole,0.85,"[125, 235, 185, 315]",12.97162,77.59463,2026-11-02T14:15:15Z,True
+det_006,drive_02,frame_0042,speed_breaker,0.94,"[295, 155, 345, 475]",12.97208,77.59512,2026-11-02T14:15:42Z,True
+det_007,drive_02,frame_0120,pothole,0.71,"[190, 280, 240, 360]",12.97450,77.59750,2026-11-02T14:17:00Z,True
+det_008,drive_03,frame_0018,pothole,0.91,"[122, 238, 182, 312]",12.97159,77.59458,2026-11-03T09:30:18Z,True
+

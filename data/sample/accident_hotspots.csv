@@ -1,0 +1,8 @@
+hotspot_id,lat,lon,radius_m,accident_count,severity_weight,segment_id,source_country
+spot_001,12.97180,77.59480,45.0,14,3.8,seg_101,India
+spot_002,12.97340,77.59630,60.0,8,2.5,seg_102,India
+spot_003,12.97510,77.59810,35.0,19,4.2,seg_103,India
+spot_004,12.97720,77.60050,50.0,5,1.8,seg_105,India
+spot_005,12.97900,77.60230,80.0,22,4.6,seg_106,India
+spot_006,12.98150,77.60500,40.0,3,1.2,seg_107,India
+

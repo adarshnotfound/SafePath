@@ -1,0 +1,10 @@
+segment_id,length_m,road_type,speed_limit,lit,hazard_density,mean_hazard_confidence,mean_freshness,accident_score,isolation_score,time_of_day
+seg_101,240.5,secondary,40,yes,0.83,0.95,0.95,0.65,0.20,night
+seg_102,185.0,tertiary,30,no,1.08,0.52,0.30,0.40,0.45,night
+seg_103,310.2,secondary,40,yes,0.64,0.41,0.42,0.80,0.15,night
+seg_104,150.0,residential,25,no,0.67,0.98,0.99,0.10,0.60,dusk
+seg_105,420.0,primary,50,yes,0.24,0.80,0.70,0.30,0.10,day
+seg_106,275.5,secondary,40,no,0.73,0.85,0.60,0.85,0.75,night
+seg_107,190.0,tertiary,30,yes,0.00,0.00,0.00,0.15,0.30,day
+seg_108,350.0,primary,50,yes,0.29,0.75,0.50,0.25,0.10,dusk
+

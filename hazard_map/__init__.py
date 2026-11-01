@@ -1,0 +1,2 @@
+"""SafePath Hazard Map Module."""
+

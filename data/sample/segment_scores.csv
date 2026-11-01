@@ -1,0 +1,10 @@
+segment_id,safety_score,level,top_factors,fired_rules,model_name
+seg_101,48.5,caution,"moderate hazard density; accident history","R2_moderate_hazard; R5_lit_night",anfis_tuned_fuzzy
+seg_102,32.0,risky,"unlit street; hazard presence; isolation","R1_night_unlit; R3_high_isolation",anfis_tuned_fuzzy
+seg_103,41.0,caution,"high accident hotspot proximity; potholes","R4_accident_hotspot; R5_lit_night",anfis_tuned_fuzzy
+seg_104,52.5,caution,"speed breaker present; high isolation","R3_high_isolation; R6_dusk_residential",anfis_tuned_fuzzy
+seg_105,82.0,safe,"daylight; well lit; low hazard density","R7_day_clear_primary",anfis_tuned_fuzzy
+seg_106,24.0,risky,"unlit street; high accident score; high isolation","R1_night_unlit; R3_high_isolation; R4_accident_hotspot",anfis_tuned_fuzzy
+seg_107,88.0,safe,"no hazards; day; low accident history","R7_day_clear_tertiary",anfis_tuned_fuzzy
+seg_108,74.5,safe,"well lit; low accident score; moderate traffic","R5_lit_dusk; R7_day_clear_primary",anfis_tuned_fuzzy
+

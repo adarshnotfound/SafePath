@@ -1,0 +1,2 @@
+"""SafePath Accidents Module."""
+

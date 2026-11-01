@@ -1,0 +1,2 @@
+"""SafePath Fuzzy Module."""
+

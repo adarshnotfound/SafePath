@@ -1,0 +1,26 @@
+# SafePath Codeowners Mapping
+# Reference: Specification Section 11 (Team modules)
+
+# Global fallback / Integration team
+* @team-lead
+
+# Module 1: Detection models and comparison
+/detection/ @owner-A
+
+# Module 2: Hazard map, accident clustering and risk model
+/hazard_map/ @owner-B
+/accidents/ @owner-B
+
+# Module 3: Fuzzy and neuro-fuzzy engine, survey
+/fuzzy/ @owner-C
+/survey/ @owner-C
+
+# Module 4: Routing, map and app interface (Role D)
+/routing/ @owner-D
+/app/ @owner-D
+
+# Shared & Evaluation
+/data/ @owner-A @owner-B @owner-C @owner-D
+/evaluation/ @owner-A @owner-B @owner-C @owner-D
+/docs/ @owner-A @owner-B @owner-C @owner-D
+

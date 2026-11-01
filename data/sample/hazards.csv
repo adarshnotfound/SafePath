@@ -1,0 +1,9 @@
+hazard_id,type,lat,lon,first_seen,last_seen,observation_count,drive_count,confidence,freshness,status,segment_id,is_simulated
+haz_001,pothole,12.97160,77.59460,2026-11-01T10:00:12Z,2026-11-03T09:30:18Z,3,3,0.96,0.92,active,seg_101,True
+haz_002,speed_breaker,12.97210,77.59510,2026-11-01T10:00:45Z,2026-11-02T14:15:42Z,2,2,0.95,0.98,active,seg_101,True
+haz_003,animal,12.97305,77.59600,2026-11-01T10:01:29Z,2026-11-01T10:01:29Z,1,1,0.40,0.15,decayed,seg_102,True
+haz_004,pothole,12.97380,77.59685,2026-11-01T10:01:50Z,2026-11-01T10:01:50Z,1,1,0.64,0.45,active,seg_102,True
+haz_005,pothole,12.97450,77.59750,2026-11-02T14:17:00Z,2026-11-02T14:17:00Z,1,1,0.71,0.80,active,seg_103,True
+haz_006,pothole,12.97520,77.59820,2026-10-15T08:00:00Z,2026-10-20T11:00:00Z,4,3,0.10,0.05,repaired,seg_103,True
+haz_007,speed_breaker,12.97600,77.59910,2026-10-25T12:00:00Z,2026-11-02T16:00:00Z,5,4,0.98,0.99,active,seg_104,True
+

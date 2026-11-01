@@ -1,0 +1,30 @@
+[
+  {
+    "route_id": "route_A",
+    "segment_ids": ["seg_105", "seg_107", "seg_108"],
+    "total_time": 820.0,
+    "total_length": 960.0,
+    "aggregate_safety": 81.2,
+    "worst_segment_score": 74.5,
+    "explanation": "Safest route: follows well-lit primary roads with low accident history and zero reported road hazards."
+  },
+  {
+    "route_id": "route_B",
+    "segment_ids": ["seg_101", "seg_102", "seg_103"],
+    "total_time": 610.0,
+    "total_length": 735.7,
+    "aggregate_safety": 41.5,
+    "worst_segment_score": 32.0,
+    "explanation": "Fastest route (3.5 minutes quicker), but traverses unlit tertiary roads with multiple active potholes and accident blackspots."
+  },
+  {
+    "route_id": "route_C",
+    "segment_ids": ["seg_101", "seg_104", "seg_108"],
+    "total_time": 715.0,
+    "total_length": 840.5,
+    "aggregate_safety": 58.7,
+    "worst_segment_score": 48.5,
+    "explanation": "Balanced alternative: avoids the worst accident blackspot but passes residential speed breakers and isolated stretches."
+  }
+]
+

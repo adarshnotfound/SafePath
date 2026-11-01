@@ -1,0 +1,12 @@
+segment_id,rater_id,rating,time_of_day_context
+seg_101,user_01,3,night
+seg_101,user_02,3,night
+seg_102,user_01,2,night
+seg_102,user_03,1,night
+seg_103,user_02,2,night
+seg_104,user_04,3,dusk
+seg_105,user_01,5,day
+seg_106,user_02,1,night
+seg_107,user_03,4,day
+seg_108,user_04,4,dusk
+

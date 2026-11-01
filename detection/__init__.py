@@ -1,0 +1,2 @@
+"""SafePath Detection Module."""
+

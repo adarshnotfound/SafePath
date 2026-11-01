@@ -1,0 +1,2 @@
+"""SafePath App Module."""
+
