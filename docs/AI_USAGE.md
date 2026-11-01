@@ -8,7 +8,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 
 | Date | Tool / Agent | Module(s) Affected | Purpose / Prompt Description | Human Reviewer |
 | :--- | :--- | :--- | :--- | :--- |
-| *YYYY-MM-DD* | *e.g., Antigravity* | *e.g., repo skeleton* | *Created project skeleton and contract samples* | *Team Member* |
+| 2026-11-01 | Antigravity IDE | `/hazard_map/simulated_drive.py` | Task B1: Multi-drive simulated detection generator with GPS noise, lifecycles, and metrics | Member B (Ankit) |
 
 ---
 
