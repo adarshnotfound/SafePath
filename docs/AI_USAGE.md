@@ -10,6 +10,9 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | :--- | :--- | :--- | :--- | :--- |
 | 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
+| 2026-11-11 | Antigravity | `/routing`, `/evaluation`, `/docs` | Implemented OSMnx Prayagraj network & POI downloader, Section 8 `segment_features.csv` builder, metric `isolation_score`, projected `STRtree` snapping, tag coverage & benchmark script, and unit tests | Team Owner D |
+| 2026-11-11 | Antigravity | `/routing`, `/evaluation`, `/data` | Implemented multi-route generator (`SafePathRouter`), length-weighted safety aggregation, plain-language explanation synthesis, Section 8 `routes.json` export, and 20 OD-pair trade-off experiment (`evaluate_tradeoff.py`) | Team Owner D |
+| 2026-11-11 | Antigravity | `/app` | Implemented Streamlit web interface (`app/main.py`), Folium map color-coding (`app/map_utils.py`), mock/real config toggles (`app/config.py`), hazard/hotspot layers, Personal Safety Mode, and unit tests (`app/test_app.py`) | Team Owner D |
 
 ---
 
