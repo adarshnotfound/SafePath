@@ -51,7 +51,13 @@ python -m detection.data_prep
 ```
 Converts raw VOC XML annotations to YOLO standard coordinates and writes `data/rdd2022_safepath.yaml`. See documentation in [`docs/DATA_CARD_RDD2022.md`](../docs/DATA_CARD_RDD2022.md).
 
-### 4. Run Unit & Contract Tests
+### 4. Run Video Drive Processor (Section 4.1 & 4.2)
+```bash
+python -m detection.process_drive
+```
+Samples video frames (1-2s intervals), estimates lighting, projects detections onto a route with 5-15m GPS noise, and exports to `detections.csv`.
+
+### 5. Run Unit & Contract Tests
 ```bash
 pytest -v detection/
 ```
