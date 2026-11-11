@@ -8,7 +8,8 @@ This document tracks all external AI tools, coding assistants, pretrained models
 
 | Date | Tool / Agent | Module(s) Affected | Purpose / Prompt Description | Human Reviewer |
 | :--- | :--- | :--- | :--- | :--- |
-| *YYYY-MM-DD* | *e.g., Antigravity* | *e.g., repo skeleton* | *Created project skeleton and contract samples* | *Team Member* |
+| 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
+| 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 
 ---
 
