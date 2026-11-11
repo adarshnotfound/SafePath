@@ -1,0 +1,754 @@
+{
+  "experiment_name": "SafePath Routing: Safest vs Fastest Trade-Off Evaluation",
+  "timestamp_iso": "2026-11-11T15:22:28Z",
+  "city": "Prayagraj, Uttar Pradesh, India",
+  "random_seed": 42,
+  "methodology": {
+    "baseline": "Fastest Route (Dijkstra on travel time from edge length and road speeds)",
+    "proposed": "Safety-Aware Route (Dijkstra on safety-penalized time cost)",
+    "aggregation": "Length-weighted segment safety score plus worst-segment minimum",
+    "scores_provenance": "substitute_baseline_heuristic (features) + sample_segment_scores"
+  },
+  "summary_metrics": {
+    "num_pairs_evaluated": 20,
+    "safest_differs_count": 10,
+    "safest_differs_percentage": 50.0,
+    "extra_travel_time_minutes": {
+      "mean_overall": 0.39,
+      "median_overall": 0.03,
+      "max_overall": 2.86,
+      "mean_when_differing": 0.78
+    },
+    "extra_distance_metres": {
+      "mean": 279.5,
+      "max": 1624.2
+    },
+    "safety_improvement": {
+      "mean_safety_gain_overall": 1.17,
+      "mean_safety_gain_when_differing": 2.33,
+      "mean_worst_segment_gain": 0.04
+    }
+  },
+  "pairs_detail": [
+    {
+      "pair_index": 1,
+      "origin_node": 316695443,
+      "destination_node": 8771907133,
+      "origin_lat": 25.4664835,
+      "origin_lon": 81.8468441,
+      "destination_lat": 25.4469061,
+      "destination_lon": 81.8657028,
+      "topological_hops": 44,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 332.4,
+        "time_minutes": 5.54,
+        "length_m": 3559.8,
+        "aggregate_safety": 49.1,
+        "worst_segment_score": 33.7
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 332.4,
+        "time_minutes": 5.54,
+        "length_m": 3559.8,
+        "aggregate_safety": 49.1,
+        "worst_segment_score": 33.7
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 2,
+      "origin_node": 7310577833,
+      "destination_node": 4224961233,
+      "origin_lat": 25.4484801,
+      "origin_lon": 81.8750069,
+      "destination_lat": 25.4964054,
+      "destination_lon": 81.8522329,
+      "topological_hops": 67,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.444,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 673.6,
+        "time_minutes": 11.23,
+        "length_m": 6901.4,
+        "aggregate_safety": 40.8,
+        "worst_segment_score": 17.6
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 684.3,
+        "time_minutes": 11.4,
+        "length_m": 7372.7,
+        "aggregate_safety": 43.5,
+        "worst_segment_score": 17.6
+      },
+      "tradeoff": {
+        "extra_time_seconds": 10.6,
+        "extra_time_minutes": 0.18,
+        "extra_length_m": 471.4,
+        "safety_gain": 2.8,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 3,
+      "origin_node": 4221312341,
+      "destination_node": 9625499024,
+      "origin_lat": 25.4284037,
+      "origin_lon": 81.8556756,
+      "destination_lat": 25.4315182,
+      "destination_lon": 81.7852251,
+      "topological_hops": 79,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 721.6,
+        "time_minutes": 12.03,
+        "length_m": 9138.4,
+        "aggregate_safety": 47.9,
+        "worst_segment_score": 30.1
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 721.6,
+        "time_minutes": 12.03,
+        "length_m": 9138.4,
+        "aggregate_safety": 47.9,
+        "worst_segment_score": 30.1
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 4,
+      "origin_node": 316692774,
+      "destination_node": 7999230850,
+      "origin_lat": 25.4692096,
+      "origin_lon": 81.8202213,
+      "destination_lat": 25.4807912,
+      "destination_lon": 81.6775133,
+      "topological_hops": 82,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.459,
+      "fastest_route": {
+        "route_id": "route_B",
+        "time_seconds": 1277.3,
+        "time_minutes": 21.29,
+        "length_m": 18499.0,
+        "aggregate_safety": 25.9,
+        "worst_segment_score": 5.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1337.7,
+        "time_minutes": 22.3,
+        "length_m": 19569.4,
+        "aggregate_safety": 28.7,
+        "worst_segment_score": 5.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 60.4,
+        "extra_time_minutes": 1.01,
+        "extra_length_m": 1070.5,
+        "safety_gain": 2.8,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 5,
+      "origin_node": 4229916797,
+      "destination_node": 11426648805,
+      "origin_lat": 25.4477405,
+      "origin_lon": 81.7337349,
+      "destination_lat": 25.4333331,
+      "destination_lon": 81.7880893,
+      "topological_hops": 46,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 575.4,
+        "time_minutes": 9.59,
+        "length_m": 8542.8,
+        "aggregate_safety": 33.7,
+        "worst_segment_score": 5.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 575.4,
+        "time_minutes": 9.59,
+        "length_m": 8542.8,
+        "aggregate_safety": 33.7,
+        "worst_segment_score": 5.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 6,
+      "origin_node": 8576404830,
+      "destination_node": 8771529609,
+      "origin_lat": 25.4384146,
+      "origin_lon": 81.8222572,
+      "destination_lat": 25.4443403,
+      "destination_lon": 81.863476,
+      "topological_hops": 61,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.785,
+      "fastest_route": {
+        "route_id": "route_B",
+        "time_seconds": 426.9,
+        "time_minutes": 7.11,
+        "length_m": 5214.3,
+        "aggregate_safety": 49.3,
+        "worst_segment_score": 33.8
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 430.4,
+        "time_minutes": 7.17,
+        "length_m": 5543.6,
+        "aggregate_safety": 50.2,
+        "worst_segment_score": 33.8
+      },
+      "tradeoff": {
+        "extra_time_seconds": 3.5,
+        "extra_time_minutes": 0.06,
+        "extra_length_m": 329.3,
+        "safety_gain": 0.9,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 7,
+      "origin_node": 8499355794,
+      "destination_node": 8772167454,
+      "origin_lat": 25.4639458,
+      "origin_lon": 81.7204151,
+      "destination_lat": 25.4452066,
+      "destination_lon": 81.8697067,
+      "topological_hops": 128,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1302.6,
+        "time_minutes": 21.71,
+        "length_m": 18007.5,
+        "aggregate_safety": 35.5,
+        "worst_segment_score": 5.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1302.6,
+        "time_minutes": 21.71,
+        "length_m": 18007.5,
+        "aggregate_safety": 35.5,
+        "worst_segment_score": 5.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 8,
+      "origin_node": 4229566956,
+      "destination_node": 4206868250,
+      "origin_lat": 25.4508878,
+      "origin_lon": 81.7067995,
+      "destination_lat": 25.4540948,
+      "destination_lon": 81.7801142,
+      "topological_hops": 47,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 641.6,
+        "time_minutes": 10.69,
+        "length_m": 8814.5,
+        "aggregate_safety": 21.2,
+        "worst_segment_score": 5.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 641.6,
+        "time_minutes": 10.69,
+        "length_m": 8814.5,
+        "aggregate_safety": 21.2,
+        "worst_segment_score": 5.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 9,
+      "origin_node": 9182765835,
+      "destination_node": 4225177543,
+      "origin_lat": 25.4631178,
+      "origin_lon": 81.8462775,
+      "destination_lat": 25.4531974,
+      "destination_lon": 81.8085779,
+      "topological_hops": 56,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 479.2,
+        "time_minutes": 7.99,
+        "length_m": 4653.5,
+        "aggregate_safety": 45.4,
+        "worst_segment_score": 24.4
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 479.2,
+        "time_minutes": 7.99,
+        "length_m": 4653.5,
+        "aggregate_safety": 45.4,
+        "worst_segment_score": 24.4
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 10,
+      "origin_node": 4229419061,
+      "destination_node": 4218682916,
+      "origin_lat": 25.450847,
+      "origin_lon": 81.7517302,
+      "destination_lat": 25.4795019,
+      "destination_lon": 81.8471025,
+      "topological_hops": 100,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.301,
+      "fastest_route": {
+        "route_id": "route_B",
+        "time_seconds": 941.2,
+        "time_minutes": 15.69,
+        "length_m": 12382.8,
+        "aggregate_safety": 42.2,
+        "worst_segment_score": 15.6
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1112.6,
+        "time_minutes": 18.54,
+        "length_m": 14007.0,
+        "aggregate_safety": 43.4,
+        "worst_segment_score": 15.5
+      },
+      "tradeoff": {
+        "extra_time_seconds": 171.4,
+        "extra_time_minutes": 2.86,
+        "extra_length_m": 1624.2,
+        "safety_gain": 1.2,
+        "worst_segment_gain": -0.1
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 11,
+      "origin_node": 4208761928,
+      "destination_node": 10175677936,
+      "origin_lat": 25.4347468,
+      "origin_lon": 81.826079,
+      "destination_lat": 25.4517773,
+      "destination_lon": 81.7663253,
+      "topological_hops": 68,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.785,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 510.4,
+        "time_minutes": 8.51,
+        "length_m": 6841.9,
+        "aggregate_safety": 42.4,
+        "worst_segment_score": 14.9
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 516.0,
+        "time_minutes": 8.6,
+        "length_m": 6935.3,
+        "aggregate_safety": 43.0,
+        "worst_segment_score": 14.9
+      },
+      "tradeoff": {
+        "extra_time_seconds": 5.6,
+        "extra_time_minutes": 0.09,
+        "extra_length_m": 93.4,
+        "safety_gain": 0.6,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 12,
+      "origin_node": 8772053774,
+      "destination_node": 7258871521,
+      "origin_lat": 25.4478953,
+      "origin_lon": 81.8749128,
+      "destination_lat": 25.419004,
+      "destination_lon": 81.8014548,
+      "topological_hops": 104,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.767,
+      "fastest_route": {
+        "route_id": "route_B",
+        "time_seconds": 916.9,
+        "time_minutes": 15.28,
+        "length_m": 10263.2,
+        "aggregate_safety": 47.0,
+        "worst_segment_score": 23.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 927.4,
+        "time_minutes": 15.46,
+        "length_m": 10576.8,
+        "aggregate_safety": 47.8,
+        "worst_segment_score": 23.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 10.6,
+        "extra_time_minutes": 0.18,
+        "extra_length_m": 313.6,
+        "safety_gain": 0.8,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 13,
+      "origin_node": 4219098997,
+      "destination_node": 8928789849,
+      "origin_lat": 25.4213173,
+      "origin_lon": 81.7653774,
+      "destination_lat": 25.4792379,
+      "destination_lon": 81.8271612,
+      "topological_hops": 95,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.07,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 1140.5,
+        "time_minutes": 19.01,
+        "length_m": 12883.2,
+        "aggregate_safety": 37.9,
+        "worst_segment_score": 19.3
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1239.9,
+        "time_minutes": 20.67,
+        "length_m": 12744.4,
+        "aggregate_safety": 41.6,
+        "worst_segment_score": 19.3
+      },
+      "tradeoff": {
+        "extra_time_seconds": 99.4,
+        "extra_time_minutes": 1.66,
+        "extra_length_m": -138.8,
+        "safety_gain": 3.8,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 14,
+      "origin_node": 4230147477,
+      "destination_node": 4224969309,
+      "origin_lat": 25.4512923,
+      "origin_lon": 81.8758662,
+      "destination_lat": 25.4949207,
+      "destination_lon": 81.8702874,
+      "topological_hops": 58,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 645.4,
+        "time_minutes": 10.76,
+        "length_m": 7412.9,
+        "aggregate_safety": 43.8,
+        "worst_segment_score": 21.7
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 645.4,
+        "time_minutes": 10.76,
+        "length_m": 7412.9,
+        "aggregate_safety": 43.8,
+        "worst_segment_score": 21.7
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 15,
+      "origin_node": 4225177545,
+      "destination_node": 4209005072,
+      "origin_lat": 25.4532919,
+      "origin_lon": 81.8121238,
+      "destination_lat": 25.427601,
+      "destination_lon": 81.8184394,
+      "topological_hops": 61,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.269,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 509.1,
+        "time_minutes": 8.49,
+        "length_m": 4056.3,
+        "aggregate_safety": 39.8,
+        "worst_segment_score": 26.4
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 528.4,
+        "time_minutes": 8.81,
+        "length_m": 4944.5,
+        "aggregate_safety": 45.7,
+        "worst_segment_score": 26.4
+      },
+      "tradeoff": {
+        "extra_time_seconds": 19.2,
+        "extra_time_minutes": 0.32,
+        "extra_length_m": 888.2,
+        "safety_gain": 5.9,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 16,
+      "origin_node": 2086304698,
+      "destination_node": 4231368989,
+      "origin_lat": 25.4266452,
+      "origin_lon": 81.8277433,
+      "destination_lat": 25.4131913,
+      "destination_lon": 81.7031228,
+      "topological_hops": 88,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1417.8,
+        "time_minutes": 23.63,
+        "length_m": 17625.7,
+        "aggregate_safety": 28.1,
+        "worst_segment_score": 5.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1417.8,
+        "time_minutes": 23.63,
+        "length_m": 17625.7,
+        "aggregate_safety": 28.1,
+        "worst_segment_score": 5.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 17,
+      "origin_node": 9684449294,
+      "destination_node": 316674330,
+      "origin_lat": 25.4779674,
+      "origin_lon": 81.8787643,
+      "destination_lat": 25.4509696,
+      "destination_lon": 81.8743918,
+      "topological_hops": 48,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.119,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 584.0,
+        "time_minutes": 9.73,
+        "length_m": 4707.3,
+        "aggregate_safety": 41.0,
+        "worst_segment_score": 22.9
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 660.6,
+        "time_minutes": 11.01,
+        "length_m": 5341.8,
+        "aggregate_safety": 44.0,
+        "worst_segment_score": 22.9
+      },
+      "tradeoff": {
+        "extra_time_seconds": 76.7,
+        "extra_time_minutes": 1.28,
+        "extra_length_m": 634.5,
+        "safety_gain": 3.1,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 3
+    },
+    {
+      "pair_index": 18,
+      "origin_node": 9625494415,
+      "destination_node": 9182680692,
+      "origin_lat": 25.4297305,
+      "origin_lon": 81.7842276,
+      "destination_lat": 25.4779721,
+      "destination_lon": 81.869452,
+      "topological_hops": 96,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1050.0,
+        "time_minutes": 17.5,
+        "length_m": 13518.2,
+        "aggregate_safety": 48.0,
+        "worst_segment_score": 25.8
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 1050.0,
+        "time_minutes": 17.5,
+        "length_m": 13518.2,
+        "aggregate_safety": 48.0,
+        "worst_segment_score": 25.8
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 19,
+      "origin_node": 4210625174,
+      "destination_node": 5074819582,
+      "origin_lat": 25.4627041,
+      "origin_lon": 81.8372313,
+      "destination_lat": 25.446809,
+      "destination_lon": 81.8809159,
+      "topological_hops": 70,
+      "safest_differs_from_fastest": false,
+      "segment_jaccard_overlap": 1.0,
+      "fastest_route": {
+        "route_id": "route_A",
+        "time_seconds": 624.9,
+        "time_minutes": 10.42,
+        "length_m": 6500.4,
+        "aggregate_safety": 48.9,
+        "worst_segment_score": 29.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 624.9,
+        "time_minutes": 10.42,
+        "length_m": 6500.4,
+        "aggregate_safety": 48.9,
+        "worst_segment_score": 29.0
+      },
+      "tradeoff": {
+        "extra_time_seconds": 0.0,
+        "extra_time_minutes": 0.0,
+        "extra_length_m": 0.0,
+        "safety_gain": 0.0,
+        "worst_segment_gain": 0.0
+      },
+      "available_alternatives_count": 2
+    },
+    {
+      "pair_index": 20,
+      "origin_node": 4208536018,
+      "destination_node": 8771526035,
+      "origin_lat": 25.4294027,
+      "origin_lon": 81.8338115,
+      "destination_lat": 25.4420418,
+      "destination_lon": 81.8612283,
+      "topological_hops": 50,
+      "safest_differs_from_fastest": true,
+      "segment_jaccard_overlap": 0.635,
+      "fastest_route": {
+        "route_id": "route_C",
+        "time_seconds": 352.6,
+        "time_minutes": 5.88,
+        "length_m": 3831.6,
+        "aggregate_safety": 47.4,
+        "worst_segment_score": 34.0
+      },
+      "safest_route": {
+        "route_id": "route_A",
+        "time_seconds": 359.6,
+        "time_minutes": 5.99,
+        "length_m": 4134.5,
+        "aggregate_safety": 48.8,
+        "worst_segment_score": 34.8
+      },
+      "tradeoff": {
+        "extra_time_seconds": 7.1,
+        "extra_time_minutes": 0.12,
+        "extra_length_m": 302.9,
+        "safety_gain": 1.4,
+        "worst_segment_gain": 0.8
+      },
+      "available_alternatives_count": 3
+    }
+  ]
+}

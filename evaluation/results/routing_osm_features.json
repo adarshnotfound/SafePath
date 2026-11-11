@@ -1,0 +1,115 @@
+{
+  "experiment_name": "OSM Network Segment Features & Projected Edge Snapping",
+  "timestamp_iso": "2026-11-11T15:06:48Z",
+  "city": "Prayagraj, Uttar Pradesh, India",
+  "random_seed": 42,
+  "provenance": {
+    "road_network": {
+      "source": "OpenStreetMap (cached GraphML)",
+      "place_name": "Prayagraj, Uttar Pradesh, India",
+      "geocode_query": "Allahabad, Prayagraj, Uttar Pradesh, India",
+      "query_mode": "cached",
+      "provenance": "real",
+      "cache_path": "C:\\Users\\tarun\\Desktop\\SafePath\\data\\raw\\prayagraj_drive.graphml"
+    },
+    "pois": "real (OpenStreetMap via OSMnx)",
+    "snapping_benchmark_queries": "simulated (5-15 m Gaussian GPS noise along real OSM edges)"
+  },
+  "graph_stats": {
+    "num_nodes": 16672,
+    "num_edges": 43328,
+    "utm_crs": "EPSG:32644"
+  },
+  "tag_coverage": {
+    "total_edges": 43328,
+    "total_length_km": 3460.682,
+    "lit_coverage": {
+      "yes_count": 0,
+      "no_count": 0,
+      "unknown_count": 43328,
+      "explicitly_tagged_count": 0,
+      "explicitly_tagged_pct": 0.0,
+      "yes_pct": 0.0,
+      "no_pct": 0.0,
+      "unknown_pct": 100.0
+    },
+    "speed_limit_coverage": {
+      "osm_tagged_count": 119,
+      "missing_count": 43209,
+      "osm_tagged_pct": 0.27
+    },
+    "road_type_coverage": {
+      "known_count": 43328,
+      "known_pct": 100.0,
+      "distribution": {
+        "residential": 34931,
+        "tertiary": 3496,
+        "unclassified": 1919,
+        "secondary": 1792,
+        "primary": 536,
+        "trunk": 403,
+        "road": 60,
+        "primary_link": 54,
+        "tertiary_link": 53,
+        "secondary_link": 28,
+        "trunk_link": 28,
+        "living_street": 28
+      }
+    }
+  },
+  "isolation_summary": {
+    "poi_counts": {
+      "police": 11,
+      "hospital": 166,
+      "petrol_pump": 19,
+      "shop": 400
+    },
+    "category_medians_m": {
+      "police": 1555.82,
+      "hospital": 406.24,
+      "petrol_pump": 1240.72,
+      "shop": 572.98
+    },
+    "categories_available": 4,
+    "normalization": "minmax_p95_clipped",
+    "mean_poi_distance_m_stats": {
+      "min": 111.04,
+      "median": 966.93,
+      "mean": 1440.51,
+      "p95": 4034.34,
+      "max": 11035.56
+    },
+    "isolation_score_stats": {
+      "min": 0.0,
+      "median": 0.2182,
+      "mean": 0.3024,
+      "max": 1.0
+    }
+  },
+  "snapping_benchmark": {
+    "random_seed": 42,
+    "num_queries": 200,
+    "gps_noise_sigma_m": 10.0,
+    "baseline_nearest_node": {
+      "exact_segment_id_accuracy": 0.17,
+      "corridor_match_accuracy": 0.33,
+      "mean_snap_distance_m": 27.35,
+      "median_snap_distance_m": 20.12,
+      "p95_snap_distance_m": 69.9,
+      "mean_query_latency_ms": 0.9033
+    },
+    "proposed_projected_edge_strtree": {
+      "exact_segment_id_accuracy": 0.41,
+      "corridor_match_accuracy": 0.78,
+      "mean_snap_distance_m": 6.55,
+      "median_snap_distance_m": 5.35,
+      "p95_snap_distance_m": 16.51,
+      "mean_query_latency_ms": 0.1295
+    }
+  },
+  "outputs": {
+    "segment_features_csv": "C:\\Users\\tarun\\Desktop\\SafePath\\data\\processed\\segment_features.csv",
+    "segment_metadata_csv": "C:\\Users\\tarun\\Desktop\\SafePath\\data\\processed\\segment_metadata.csv",
+    "speed_limit_imputed_in_features_csv": false
+  }
+}
