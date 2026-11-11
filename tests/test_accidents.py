@@ -23,6 +23,13 @@ from accidents.data_loader import (
     load_accidents_from_csv,
     save_accidents_to_csv,
 )
+from accidents.risk_model import (
+    AccidentRiskModelPipeline,
+    SegmentRiskFeatures,
+    generate_segment_risk_dataset,
+    plot_risk_comparison_roc,
+    run_accident_risk_pipeline,
+)
 from accidents.visualization import plot_accident_hotspots_folium
 
 
@@ -177,6 +184,74 @@ class TestAccidentModule(unittest.TestCase):
             self.assertIn("folium", content.lower())
             self.assertIn("spot_001", content)
             self.assertIn("Native Indian Data", content)
+
+    def test_segment_risk_feature_generation(self):
+        """Verify segment feature extraction with hotspot distance and density."""
+        hotspots = [
+            AccidentHotspot("spot_001", 12.9718, 77.5948, 45.0, 14, 3.8, "seg_101", "India"),
+            AccidentHotspot("spot_002", 12.9734, 77.5963, 60.0, 8, 2.5, "seg_102", "India"),
+        ]
+        dataset = generate_segment_risk_dataset(hotspots, samples_per_segment=10, seed=42)
+        self.assertEqual(len(dataset), 80)  # 8 segments * 10 samples
+        for f in dataset:
+            self.assertTrue(f.segment_id.startswith("seg_"))
+            self.assertTrue(0.0 <= f.continuous_risk_target <= 1.0)
+            self.assertIn(f.binary_risk_target, (0, 1))
+            self.assertGreaterEqual(f.dist_to_nearest_hotspot_m, 0.0)
+            self.assertEqual(len(f.to_feature_array()), 9)
+
+    def test_risk_model_training_and_comparison(self):
+        """Verify MLP vs. Logistic Regression training, ROC-AUC, and continuous risk R^2."""
+        hotspots = [
+            AccidentHotspot("spot_001", 12.9718, 77.5948, 45.0, 14, 3.8, "seg_101", "India"),
+            AccidentHotspot("spot_002", 12.9734, 77.5963, 60.0, 8, 2.5, "seg_102", "India"),
+            AccidentHotspot("spot_003", 12.9751, 77.5981, 35.0, 19, 4.2, "seg_103", "India"),
+        ]
+        dataset = generate_segment_risk_dataset(hotspots, samples_per_segment=25, seed=42)
+        pipeline = AccidentRiskModelPipeline(random_seed=42)
+        report = pipeline.train_and_evaluate(dataset)
+
+        mlp_clf = report["models"]["mlp_neural_network"]["classification"]
+        logreg_clf = report["models"]["logistic_regression_baseline"]["classification"]
+        mlp_reg = report["models"]["mlp_neural_network"]["continuous_risk_regression"]
+
+        # Verification: high classification accuracy & AUC
+        self.assertGreaterEqual(mlp_clf["accuracy"], 0.85)
+        self.assertGreaterEqual(mlp_clf["roc_auc"], 0.90)
+        self.assertGreaterEqual(logreg_clf["accuracy"], 0.85)
+        self.assertGreaterEqual(logreg_clf["roc_auc"], 0.90)
+
+        # Verification: non-linear continuous regression performance
+        self.assertLess(mlp_reg["mse"], 0.01)
+        self.assertGreater(mlp_reg["r2"], 0.80)
+
+        # Single segment prediction test
+        pred = pipeline.predict_segment_risk(dataset[0])
+        self.assertIn("accident_score", pred)
+        self.assertIn("is_high_risk", pred)
+        self.assertTrue(0.0 <= pred["accident_score"] <= 1.0)
+
+    def test_risk_model_pipeline_artifacts(self):
+        """Verify full accident risk pipeline execution, JSON manifest, and ROC plot."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            metrics_path = Path(tmpdir) / "risk_metrics.json"
+            plot_path = Path(tmpdir) / "roc_plot.png"
+
+            _, report = run_accident_risk_pipeline(
+                output_metrics_path=metrics_path,
+                output_plot_path=plot_path,
+                seed=42,
+            )
+
+            self.assertTrue(metrics_path.exists())
+            self.assertTrue(plot_path.exists())
+            self.assertGreater(plot_path.stat().st_size, 1000)
+
+            with open(metrics_path, mode="r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.assertIn("mlp_neural_network", data["models"])
+            self.assertIn("logistic_regression_baseline", data["models"])
+            self.assertIn("roc_curves", data)
 
 
 if __name__ == "__main__":
