@@ -1,30 +1,68 @@
 [
   {
     "route_id": "route_A",
-    "segment_ids": ["seg_105", "seg_107", "seg_108"],
-    "total_time": 820.0,
-    "total_length": 960.0,
-    "aggregate_safety": 81.2,
-    "worst_segment_score": 74.5,
-    "explanation": "Safest route: follows well-lit primary roads with low accident history and zero reported road hazards."
+    "segment_ids": [
+      "seg_civi_triv_A_1",
+      "seg_civi_triv_A_2",
+      "seg_civi_triv_A_3",
+      "seg_civi_triv_A_4",
+      "seg_civi_triv_A_5",
+      "seg_civi_triv_A_6",
+      "seg_civi_triv_A_7",
+      "seg_civi_triv_A_8",
+      "seg_civi_triv_A_9",
+      "seg_civi_triv_A_10",
+      "seg_civi_triv_A_11",
+      "seg_civi_triv_A_12"
+    ],
+    "total_time": 643.3,
+    "total_length": 6450.3,
+    "aggregate_safety": 83.5,
+    "worst_segment_score": 71.0,
+    "explanation": "Safest route: follows major arterial corridors from Civil Lines to Triveni Sangam with continuous street lighting, wider lanes, and low isolation."
   },
   {
     "route_id": "route_B",
-    "segment_ids": ["seg_101", "seg_102", "seg_103"],
-    "total_time": 610.0,
-    "total_length": 735.7,
-    "aggregate_safety": 41.5,
+    "segment_ids": [
+      "seg_civi_triv_B_1",
+      "seg_civi_triv_B_2",
+      "seg_civi_triv_B_3",
+      "seg_civi_triv_B_4",
+      "seg_civi_triv_B_5",
+      "seg_civi_triv_B_6",
+      "seg_civi_triv_B_7",
+      "seg_civi_triv_B_8",
+      "seg_civi_triv_B_9",
+      "seg_civi_triv_B_10",
+      "seg_civi_triv_B_11",
+      "seg_civi_triv_B_12"
+    ],
+    "total_time": 565.6,
+    "total_length": 7607.5,
+    "aggregate_safety": 44.0,
     "worst_segment_score": 32.0,
-    "explanation": "Fastest route (3.5 minutes quicker), but traverses unlit tertiary roads with multiple active potholes and accident blackspots."
+    "explanation": "Fastest route (1.3 mins quicker): takes the most direct road cut, passing through denser traffic and secondary roads with moderate illumination."
   },
   {
     "route_id": "route_C",
-    "segment_ids": ["seg_101", "seg_104", "seg_108"],
-    "total_time": 715.0,
-    "total_length": 840.5,
-    "aggregate_safety": 58.7,
-    "worst_segment_score": 48.5,
-    "explanation": "Balanced alternative: avoids the worst accident blackspot but passes residential speed breakers and isolated stretches."
+    "segment_ids": [
+      "seg_civi_triv_C_1",
+      "seg_civi_triv_C_2",
+      "seg_civi_triv_C_3",
+      "seg_civi_triv_C_4",
+      "seg_civi_triv_C_5",
+      "seg_civi_triv_C_6",
+      "seg_civi_triv_C_7",
+      "seg_civi_triv_C_8",
+      "seg_civi_triv_C_9",
+      "seg_civi_triv_C_10",
+      "seg_civi_triv_C_11",
+      "seg_civi_triv_C_12"
+    ],
+    "total_time": 727.3,
+    "total_length": 8033.7,
+    "aggregate_safety": 65.0,
+    "worst_segment_score": 52.0,
+    "explanation": "Balanced alternative: provides a well-paved bypass corridor with good lighting and moderate travel time, avoiding high-congestion bottlenecks."
   }
 ]
-

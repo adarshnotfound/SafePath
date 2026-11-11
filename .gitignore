@@ -56,8 +56,12 @@ coverage.xml
 # Keep sample data tracked in git, but ignore raw large datasets and intermediate caches
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/prayagraj_drive.graphml
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/real_routes_cache.json
+!data/processed/segment_metadata.csv
+!data/processed/routes.json
 *.pt
 *.pth
 *.onnx

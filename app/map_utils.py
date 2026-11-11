@@ -182,7 +182,7 @@ def build_route_folium_map(
 
         popup_html = (
             f"<div style='font-family:sans-serif; min-width:180px;'>"
-            f"<h4 style='margin:0 0 4px 0; color:{route_color};'>{rid.replace('_', ' ').title()}</h4>"
+            f"<h4 style='margin:0 0 4px 0; color:{route_color};'>{rid} ({rid.replace('_', ' ').title()})</h4>"
             f"<b>Safety Rating:</b> {agg_sc:.1f}/100 ({label})<br/>"
             f"<b>Travel Time:</b> {time_min:.1f} mins<br/>"
             f"<b>Distance:</b> {dist_km:.2f} km<br/>"
@@ -191,13 +191,12 @@ def build_route_folium_map(
         )
 
         if not is_selected:
-            # Render non-selected alternative routes as clearly visible colored paths
+            # Render non-selected alternative routes as clearly visible solid colored paths
             folium.PolyLine(
                 locations=route_pts,
                 color=route_color,
-                weight=5,
+                weight=6,
                 opacity=0.85,
-                dash_array="8, 6",
                 tooltip=f"Alternative: {rid} | Safety: {agg_sc:.1f} [{label}] | {time_min:.1f}m ({dist_km:.2f}km)",
                 popup=folium.Popup(popup_html, max_width=320),
             ).add_to(m)
@@ -210,21 +209,21 @@ def build_route_folium_map(
         selected_pts = extract_route_points(selected_route, geom_cache)
 
         if selected_pts:
-            # Outer casing outline to make selected route pop and glow over all layers
+            # High-contrast casing outline to make selected route pop and glow over all layers
             folium.PolyLine(
                 locations=selected_pts,
                 color="#ffffff",
-                weight=12,
-                opacity=0.9,
+                weight=14,
+                opacity=0.92,
             ).add_to(m)
             folium.PolyLine(
                 locations=selected_pts,
-                color="#212121",
+                color="#1a237e" if sel_color != "#1565c0" else "#212121",
                 weight=10,
-                opacity=0.75,
+                opacity=0.80,
             ).add_to(m)
 
-            # Selected route stroke
+            # Selected route base stroke
             agg_sc = selected_route.get("aggregate_safety", 50.0)
             time_min = selected_route.get("total_time", 0.0) / 60.0
             dist_km = selected_route.get("total_length", 0.0) / 1000.0
@@ -241,21 +240,29 @@ def build_route_folium_map(
                 f"</div>"
             )
 
-            # Draw per-segment breakdown if segments are cached
-            has_segments = False
+            # Draw prominent active route center stroke
+            folium.PolyLine(
+                locations=selected_pts,
+                color=sel_color,
+                weight=6,
+                opacity=0.95,
+                tooltip=f"★ Selected: {selected_route_id.replace('_', ' ').title()} | Safety: {agg_sc:.1f} [{label}]",
+                popup=folium.Popup(popup_html, max_width=320),
+            ).add_to(m)
+
+            # Overlay per-segment safety colors if segment geometries are cached
             for sid in selected_route.get("segment_ids", []):
                 coords = geom_cache.get_coords(sid)
                 if coords:
-                    has_segments = True
                     seg_info = scores_dict.get(sid)
                     score = getattr(seg_info, "safety_score", agg_sc) if seg_info else agg_sc
-                    factors = getattr(seg_info, "top_factors", "corridor") if seg_info else "corridor"
+                    factors = getattr(seg_info, "top_factors", "urban corridor") if seg_info else "urban corridor"
                     seg_color, seg_label = get_safety_color_and_label(score)
 
                     folium.PolyLine(
                         locations=coords,
                         color=seg_color,
-                        weight=7,
+                        weight=5,
                         opacity=0.95,
                         tooltip=f"{selected_route_id} • {sid} | Score: {score:.1f} [{seg_label}]",
                         popup=folium.Popup(
@@ -265,17 +272,6 @@ def build_route_folium_map(
                             max_width=280,
                         ),
                     ).add_to(m)
-
-            if not has_segments:
-                # Direct continuous polyline if segments are not partitioned
-                folium.PolyLine(
-                    locations=selected_pts,
-                    color=sel_color,
-                    weight=7,
-                    opacity=0.95,
-                    tooltip=f"★ Selected: {selected_route_id} | Safety: {agg_sc:.1f} [{label}]",
-                    popup=folium.Popup(popup_html, max_width=320),
-                ).add_to(m)
 
     # Auto-fit bounds
     if all_map_points:

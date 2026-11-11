@@ -1,0 +1,46 @@
+[
+  {
+    "route_id": "route_A",
+    "segment_ids": [
+      "seg_872_105_0",
+      "seg_105_1_0",
+      "seg_1_16_0",
+      "seg_16_17_0",
+      "seg_17_18_0",
+      "seg_18_19_0",
+      "seg_19_20_0",
+      "seg_20_21_0",
+      "seg_21_22_0",
+      "seg_22_167_0",
+      "seg_167_168_0",
+      "seg_168_169_0",
+      "seg_169_170_0",
+      "seg_170_350_0"
+    ],
+    "total_time": 459.7,
+    "total_length": 6144.7,
+    "aggregate_safety": 50.0,
+    "worst_segment_score": 50.0,
+    "explanation": "Optimal route: both safest (score 50.0) and fastest (7.7 mins). Avoids severe hazards and isolated stretches (lowest segment score: 50.0)."
+  },
+  {
+    "route_id": "route_B",
+    "segment_ids": [
+      "seg_872_619_0",
+      "seg_619_265_0",
+      "seg_265_264_0",
+      "seg_264_263_0",
+      "seg_263_281_0",
+      "seg_281_280_0",
+      "seg_280_279_0",
+      "seg_279_278_0",
+      "seg_278_286_0",
+      "seg_286_350_0"
+    ],
+    "total_time": 476.4,
+    "total_length": 5419.6,
+    "aggregate_safety": 50.0,
+    "worst_segment_score": 50.0,
+    "explanation": "Balanced alternative (safety score 50.0): compromise between safety and travel time (7.9 mins). Traverses moderate corridors (worst segment score: 50.0)."
+  }
+]
