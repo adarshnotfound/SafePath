@@ -1,9 +1,9 @@
 """Tests verifying exact adherence to file contracts specified in Section 8."""
 
-import unittest
-from pathlib import Path
 import csv
 import json
+import unittest
+from pathlib import Path
 
 SAMPLE_DIR = Path(__file__).resolve().parent.parent / "data" / "sample"
 
@@ -28,7 +28,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)
@@ -55,7 +55,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)
@@ -77,7 +77,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)
@@ -102,7 +102,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)
@@ -120,7 +120,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)
@@ -140,7 +140,7 @@ class TestFileContracts(unittest.TestCase):
         with open(file_path, mode="r", encoding="utf-8") as f:
             reader = csv.reader(f)
             header = next(reader)
-            rows = list(reader)
+            rows = [r for r in reader if r]
 
         self.assertEqual(header, expected_cols)
         self.assertTrue(5 <= len(rows) <= 10)

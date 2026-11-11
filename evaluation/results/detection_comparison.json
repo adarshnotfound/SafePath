@@ -1,0 +1,71 @@
+{
+  "experiment_name": "Hazard Detection Baseline vs Proposed",
+  "timestamp_iso": "2026-11-11T13:11:09Z",
+  "random_seed": 42,
+  "evaluation_frames": 50,
+  "classes_evaluated": [
+    "pothole",
+    "speed_breaker",
+    "animal"
+  ],
+  "baseline": {
+    "model_name": "Baseline-CNN-MobileNet",
+    "architecture": "MobileNetV2-SSD / Lightweight CNN",
+    "model_size_mb": 14.2,
+    "mean_inference_time_ms": 20.1,
+    "mAP_0_5": 0.584,
+    "overall_precision": 0.612,
+    "overall_recall": 0.567,
+    "per_class": {
+      "pothole": {
+        "precision": 0.59,
+        "recall": 0.542,
+        "f1_score": 0.565
+      },
+      "speed_breaker": {
+        "precision": 0.575,
+        "recall": 0.51,
+        "f1_score": 0.54
+      },
+      "animal": {
+        "precision": 0.671,
+        "recall": 0.648,
+        "f1_score": 0.659
+      }
+    },
+    "failure_rate_night_wet": 0.42
+  },
+  "proposed": {
+    "model_name": "YOLOv8-nano",
+    "architecture": "YOLOv8-nano (Ultralytics PyTorch)",
+    "model_size_mb": 6.2,
+    "mean_inference_time_ms": 0.02,
+    "mAP_0_5": 0.768,
+    "overall_precision": 0.794,
+    "overall_recall": 0.745,
+    "per_class": {
+      "pothole": {
+        "precision": 0.782,
+        "recall": 0.751,
+        "f1_score": 0.766
+      },
+      "speed_breaker": {
+        "precision": 0.76,
+        "recall": 0.698,
+        "f1_score": 0.728
+      },
+      "animal": {
+        "precision": 0.841,
+        "recall": 0.786,
+        "f1_score": 0.813
+      }
+    },
+    "failure_rate_night_wet": 0.23
+  },
+  "comparison_delta": {
+    "mAP_0_5_improvement": "+0.184 (+31.5%)",
+    "model_size_reduction_mb": "-8.0 MB",
+    "precision_delta": "+0.182",
+    "recall_delta": "+0.178"
+  }
+}

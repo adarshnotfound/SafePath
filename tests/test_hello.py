@@ -1,14 +1,15 @@
 """Tests for module hello-world functions and initial health checks."""
 
 import unittest
-from detection.hello import hello_detection
-from hazard_map.hello import hello_hazard_map
+
 from accidents.hello import hello_accidents
-from fuzzy.hello import hello_fuzzy
-from survey.hello import hello_survey
-from routing.hello import hello_routing
 from app.hello import hello_app
+from detection.hello import hello_detection
 from evaluation.hello import hello_evaluation
+from fuzzy.hello import hello_fuzzy
+from hazard_map.hello import hello_hazard_map
+from routing.hello import hello_routing
+from survey.hello import hello_survey
 
 
 class TestHelloModules(unittest.TestCase):

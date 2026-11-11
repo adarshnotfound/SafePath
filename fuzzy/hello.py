@@ -4,8 +4,8 @@ Responsible for Mamdani rule-based inference, ANFIS / GA parameter tuning,
 explainability generation, and segment safety scoring. (Owner C)
 """
 
-from pathlib import Path
 import csv
+from pathlib import Path
 
 
 def hello_fuzzy() -> str:

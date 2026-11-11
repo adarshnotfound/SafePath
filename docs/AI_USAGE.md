@@ -8,7 +8,10 @@ This document tracks all external AI tools, coding assistants, pretrained models
 
 | Date | Tool / Agent | Module(s) Affected | Purpose / Prompt Description | Human Reviewer |
 | :--- | :--- | :--- | :--- | :--- |
+| 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
 | 2026-11-01 | Antigravity IDE | `/hazard_map/simulated_drive.py` | Task B1: Multi-drive simulated detection generator with GPS noise, lifecycles, and metrics | Member B (Ankit) |
+| 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
+| 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
 
 ---
 

@@ -4,8 +4,8 @@ Responsible for road hazard detection (potholes, speed breakers, animals)
 from road images and video frames. (Owner A)
 """
 
-from pathlib import Path
 import csv
+from pathlib import Path
 
 
 def hello_detection() -> str:

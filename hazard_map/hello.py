@@ -4,8 +4,8 @@ Responsible for merging duplicate detections via clustering (e.g. DBSCAN),
 managing hazard confidence rise, freshness, and temporal decay. (Owner B)
 """
 
-from pathlib import Path
 import csv
+from pathlib import Path
 
 
 def hello_hazard_map() -> str:
