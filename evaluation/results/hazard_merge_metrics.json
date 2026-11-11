@@ -1,0 +1,26 @@
+{
+  "duplicate_merge_accuracy": 1.0,
+  "mean_spatial_error_meters": 7.46,
+  "repair_detection_rate": 1.0,
+  "false_decay_rate": 0.0,
+  "consistency_across_drives": {
+    "tracking_consistency_rate": 1.0,
+    "mean_position_stability_std_meters": 1.85,
+    "confidence_gain_ratio": 1.0
+  },
+  "summary": {
+    "total_ground_truth_hazards": 7,
+    "total_living_map_hazards": 9,
+    "active_hazards": 6,
+    "repaired_hazards": 2,
+    "decayed_hazards": 1
+  },
+  "details": {
+    "matched_gt_count": 7,
+    "total_gt_count": 7,
+    "multi_drive_gt_count": 4,
+    "repaired_gt_count": 2,
+    "active_gt_count": 5,
+    "over_merges_detected": 0
+  }
+}

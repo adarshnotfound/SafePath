@@ -1,0 +1,10 @@
+{
+  "random_seed": 42,
+  "gps_noise_std_meters": 8.0,
+  "num_drives": 3,
+  "total_ground_truth_hazards": 7,
+  "total_possible_detections": 15,
+  "actual_true_detections": 14,
+  "false_positives_count": 3,
+  "total_detections_generated": 17
+}

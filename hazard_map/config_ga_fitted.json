@@ -1,0 +1,31 @@
+{
+  "dbscan_eps_meters": 7.0,
+  "dbscan_min_samples": 1,
+  "association_radius_meters": 25.0,
+  "coverage_radius_meters": 45.0,
+  "default_miss_threshold_k": 2,
+  "confidence_rise_factor": 0.6,
+  "max_confidence": 0.99,
+  "min_active_confidence": 0.45,
+  "min_active_freshness": 0.2,
+  "type_persistence": {
+    "speed_breaker": {
+      "decay_rate": 0.0956,
+      "freshness_decay_rate": 0.1434,
+      "miss_threshold_k": 2,
+      "description": "GA-learned speed breaker persistence"
+    },
+    "pothole": {
+      "decay_rate": 0.75,
+      "freshness_decay_rate": 0.8999999999999999,
+      "miss_threshold_k": 1,
+      "description": "GA-learned pothole persistence"
+    },
+    "animal": {
+      "decay_rate": 0.6798,
+      "freshness_decay_rate": 0.74778,
+      "miss_threshold_k": 1,
+      "description": "GA-learned animal persistence"
+    }
+  }
+}

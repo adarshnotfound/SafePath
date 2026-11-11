@@ -1,0 +1,132 @@
+{
+  "dataset_metadata": {
+    "total_accidents": 88,
+    "source_country": "India",
+    "provenance": "real",
+    "is_indian_data": true,
+    "geographic_center": {
+      "lat": 12.97581,
+      "lon": 77.59898
+    }
+  },
+  "dbscan": {
+    "best_params": {
+      "eps_meters": 40.0,
+      "min_samples": 3
+    },
+    "num_hotspots_found": 6,
+    "silhouette_score": 0.911,
+    "noise_points": 12,
+    "noise_ratio": 0.1364,
+    "mean_hotspot_radius_m": 30.6,
+    "sweep_top_5": [
+      {
+        "algorithm": "DBSCAN",
+        "eps_meters": 40.0,
+        "min_samples": 3,
+        "num_clusters": 6,
+        "noise_count": 12,
+        "noise_ratio": 0.1364,
+        "silhouette_score": 0.911
+      },
+      {
+        "algorithm": "DBSCAN",
+        "eps_meters": 40.0,
+        "min_samples": 4,
+        "num_clusters": 6,
+        "noise_count": 12,
+        "noise_ratio": 0.1364,
+        "silhouette_score": 0.911
+      },
+      {
+        "algorithm": "DBSCAN",
+        "eps_meters": 40.0,
+        "min_samples": 5,
+        "num_clusters": 6,
+        "noise_count": 13,
+        "noise_ratio": 0.1477,
+        "silhouette_score": 0.9109
+      },
+      {
+        "algorithm": "DBSCAN",
+        "eps_meters": 60.0,
+        "min_samples": 3,
+        "num_clusters": 6,
+        "noise_count": 11,
+        "noise_ratio": 0.125,
+        "silhouette_score": 0.9055
+      },
+      {
+        "algorithm": "DBSCAN",
+        "eps_meters": 60.0,
+        "min_samples": 4,
+        "num_clusters": 6,
+        "noise_count": 11,
+        "noise_ratio": 0.125,
+        "silhouette_score": 0.9055
+      }
+    ]
+  },
+  "fuzzy_c_means": {
+    "best_params": {
+      "c_clusters": 8,
+      "m_fuzziness": 1.5
+    },
+    "num_hotspots_found": 8,
+    "silhouette_score": 0.7976,
+    "fuzzy_partition_coefficient": 0.9705,
+    "mean_hotspot_radius_m": 58.6,
+    "sweep_top_5": [
+      {
+        "algorithm": "FCM",
+        "c_clusters": 8,
+        "m_fuzziness": 1.5,
+        "fpc": 0.9705,
+        "silhouette_score": 0.7976,
+        "min_cluster_size": 3,
+        "max_cluster_size": 23
+      },
+      {
+        "algorithm": "FCM",
+        "c_clusters": 8,
+        "m_fuzziness": 1.8,
+        "fpc": 0.9433,
+        "silhouette_score": 0.7976,
+        "min_cluster_size": 3,
+        "max_cluster_size": 23
+      },
+      {
+        "algorithm": "FCM",
+        "c_clusters": 8,
+        "m_fuzziness": 1.2,
+        "fpc": 0.9969,
+        "silhouette_score": 0.7636,
+        "min_cluster_size": 2,
+        "max_cluster_size": 25
+      },
+      {
+        "algorithm": "FCM",
+        "c_clusters": 7,
+        "m_fuzziness": 1.5,
+        "fpc": 0.9441,
+        "silhouette_score": 0.7422,
+        "min_cluster_size": 4,
+        "max_cluster_size": 25
+      },
+      {
+        "algorithm": "FCM",
+        "c_clusters": 7,
+        "m_fuzziness": 1.8,
+        "fpc": 0.9237,
+        "silhouette_score": 0.7198,
+        "min_cluster_size": 4,
+        "max_cluster_size": 23
+      }
+    ]
+  },
+  "soft_computing_insights": {
+    "selected_production_algorithm": "DBSCAN",
+    "dbscan_advantages": "Excludes dispersed background accidents as noise; robust boundary detection without pre-fixing k.",
+    "fcm_advantages": "Soft computing continuous membership degrees allow modeling gradual safety risk transitions instead of abrupt step functions."
+  }
+}

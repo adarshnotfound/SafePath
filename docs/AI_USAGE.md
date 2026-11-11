@@ -9,6 +9,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | Date | Tool / Agent | Module(s) Affected | Purpose / Prompt Description | Human Reviewer |
 | :--- | :--- | :--- | :--- | :--- |
 | 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
+| 2026-11-01 | Antigravity IDE | `/hazard_map/simulated_drive.py` | Task B1: Multi-drive simulated detection generator with GPS noise, lifecycles, and metrics | Member B (Ankit) |
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection` | Implemented video drive processor, trajectory waypoint interpolation, and Section 4.2 GPS noise modeling | Team Owner A |
@@ -17,6 +18,10 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Fair detector training & benchmark (hardware profiler, 640x640 resolution, shared augmentations), 3x3 confusion matrix, 20 visual failure images, and hyperparameter justification doc | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection` | Custom-threshold lighting classifier (`classify_lighting`) with calibration, and batch YOLO folder detector exporting contract-compliant `detections.csv` | Team Owner A |
 | 2026-11-11 | Antigravity | `/accidents`, `/evaluation`, `/docs` | Implemented UK STATS19 tabular accident severity prediction pipeline, leakage-free 3-way split, baseline Logistic Regression vs proposed MLP, class imbalance handling, metrics JSON, and domain transfer analysis | Team Owner B / A |
+| 2026-11-11 | Antigravity | `/hazard_map` | Task B2: DBSCAN projected coordinate clustering, living map per-drive update, K-miss decay, and evaluation | Member B (Ankit) |
+| 2026-11-11 | Antigravity | `/accidents` | Task B3: Accident hotspot clustering (DBSCAN vs Fuzzy C-Means), parameter sweeps, silhouette evaluation, Folium visualization, and provenance tracking | Member B (Ankit) |
+| 2026-11-11 | Antigravity | `/hazard_map` | Task B2-GA: Genetic Algorithm (DEAP) decay rate and miss-threshold optimization, convergence plotting | Member B (Ankit) |
+| 2026-11-11 | Antigravity | `/accidents` | Task B4: Accident risk prediction neural network (MLP vs. Logistic Regression baseline), continuous risk R², ROC curve, and metrics export | Member B (Ankit) |
 
 ---
 
@@ -37,6 +42,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | *e.g., OpenStreetMap* | *OSMnx / Overpass* | *India (Chosen city)* | *Road network graph & proxies* | `real` |
 | *e.g., RDD2022* | *CRDDC 2022* | *India* | *Pothole detection training* | `real` |
 | *e.g., UK STATS19* | *data.gov.uk* | *United Kingdom* | *Accident risk model fallback* | `substitute` |
+| Karnataka State Blackspots | data.gov.in / KSP | India (Bengaluru) | Accident hotspot clustering & risk training | `real` |
 | *e.g., Simulated Drives*| *In-house generator*| *Synthetic* | *Merge/decay timeline validation* | `simulated` |
 
 ---
@@ -48,4 +54,3 @@ This document tracks all external AI tools, coding assistants, pretrained models
   - [ ] Fuzzy membership functions, Mamdani inference, and defuzzification explained.
   - [ ] DBSCAN clustering metric and distance threshold rationale explained.
   - [ ] A* / Dijkstra / OSMnx routing aggregation method explained.
-
