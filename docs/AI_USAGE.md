@@ -15,6 +15,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-11 | Antigravity | `/detection` | Implemented LightingCNN classifier, baseline vs CNN glare benchmark, and Section 3 stretch goal | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Unified multi-source dataset builder (RDD2022, Roboflow, Kaggle), corrupt filtering, SHA-256 deduplication, 3-way partition (seed 42), and comprehensive Data Card | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Fair detector training & benchmark (hardware profiler, 640x640 resolution, shared augmentations), 3x3 confusion matrix, 20 visual failure images, and hyperparameter justification doc | Team Owner A |
+| 2026-11-11 | Antigravity | `/detection` | Custom-threshold lighting classifier (`classify_lighting`) with calibration, and batch YOLO folder detector exporting contract-compliant `detections.csv` | Team Owner A |
 
 ---
 

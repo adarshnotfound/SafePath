@@ -75,7 +75,13 @@ python -m detection.visualize_failures
 ```
 Generates 20 visual failure images with color-coded ground-truth and prediction boxes saved to `evaluation/results/failure_images/`.
 
-### 8. Run Unit & Contract Tests
+### 8. Run Batch YOLO Detection on an Image Folder
+```bash
+python -m detection.batch_detect --input-dir data/sample/test_images --output-csv data/processed/detections.csv
+```
+Processes an entire image folder with YOLO and exports exact Section 8 columns (`lat`, `lon`, `timestamp` left empty prior to GPS placement).
+
+### 9. Run Unit & Contract Tests
 ```bash
 pytest -v detection/
 ```

@@ -64,3 +64,4 @@ Benchmark executed on host hardware:
 - **YOLOv8-nano Latency**: ~`0.04 ms` per frame (vectorized inference)
 - **Model Footprint**: Baseline `14.2 MB` vs. YOLOv8n `6.2 MB` (-56.3% smaller)
 - **Overall mAP@0.5**: Baseline `0.584` vs. YOLOv8n `0.768` (+31.5% improvement)
+
