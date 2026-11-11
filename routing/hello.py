@@ -9,15 +9,19 @@ from pathlib import Path
 
 
 def hello_routing() -> str:
-    """Print status and read sample routes."""
+    """Print status and read available routes."""
     module_name = "Routing Module (Owner D)"
-    sample_file = Path(__file__).resolve().parent.parent / "data" / "sample" / "routes.json"
+    base = Path(__file__).resolve().parent.parent / "data"
+    proc_file = base / "processed" / "routes.json"
+    sample_file = base / "sample" / "routes.json"
+
+    target_file = proc_file if proc_file.exists() else sample_file
     count = 0
-    if sample_file.exists():
-        with open(sample_file, mode="r", encoding="utf-8") as f:
+    if target_file.exists():
+        with open(target_file, mode="r", encoding="utf-8") as f:
             data = json.load(f)
             count = len(data) if isinstance(data, list) else 1
-    return f"[{module_name}] Ready. Found {count} sample routes in {sample_file.name}."
+    return f"[{module_name}] Ready. Found {count} routes in {target_file.relative_to(base.parent)}."
 
 
 def main():
