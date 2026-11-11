@@ -45,9 +45,15 @@ python -m detection.error_analysis
 ```
 Saves report to `evaluation/results/detection_failure_cases.json`.
 
-### 3. Run Unit & Contract Tests
+### 3. Run RDD2022 Dataset Preparation
 ```bash
-pytest -v detection/test_detection.py
+python -m detection.data_prep
+```
+Converts raw VOC XML annotations to YOLO standard coordinates and writes `data/rdd2022_safepath.yaml`. See documentation in [`docs/DATA_CARD_RDD2022.md`](../docs/DATA_CARD_RDD2022.md).
+
+### 4. Run Unit & Contract Tests
+```bash
+pytest -v detection/
 ```
 
 ---
