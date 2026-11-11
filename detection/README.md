@@ -63,7 +63,19 @@ python -m detection.evaluate_lighting
 ```
 Compares scalar mean luminance thresholding against `LightingCNN` on glare resistance, logging results to `evaluation/results/lighting_comparison.json`.
 
-### 6. Run Unit & Contract Tests
+### 6. Run Fair Training & Benchmark Pipeline
+```bash
+python -m detection.train
+```
+Runs fair comparison under identical $640 \times 640$ resolution and shared augmentations, detects hardware (`<GPU/CPU>`), logs metrics to `evaluation/results/detection_experiment.json`, and saves the $3 \times 3$ confusion matrix to `evaluation/results/detection_confusion_matrix.json`. See hyperparameter justifications in [`docs/HYPERPARAMETERS_DETECTION.md`](../docs/HYPERPARAMETERS_DETECTION.md).
+
+### 7. Generate 20 Visual Failure Case Images
+```bash
+python -m detection.visualize_failures
+```
+Generates 20 visual failure images with color-coded ground-truth and prediction boxes saved to `evaluation/results/failure_images/`.
+
+### 8. Run Unit & Contract Tests
 ```bash
 pytest -v detection/
 ```

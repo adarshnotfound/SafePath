@@ -1,0 +1,107 @@
+{
+  "experiment_title": "Fair Comparison of Road Hazard Detectors on Indian Roads",
+  "timestamp_iso": "2026-11-11T14:49:13Z",
+  "random_seed": 42,
+  "hardware_environment": {
+    "os": "Windows",
+    "os_release": "11",
+    "processor": "Intel64 Family 6 Model 197 Stepping 2, GenuineIntel",
+    "python_version": "3.14.2",
+    "device_type": "CPU",
+    "device_name": "Intel64 Family 6 Model 197 Stepping 2, GenuineIntel",
+    "cuda_available": false,
+    "device_count": 0
+  },
+  "shared_training_config": {
+    "image_size": [
+      640,
+      640
+    ],
+    "batch_size": 16,
+    "random_seed": 42,
+    "augmentation_policy": {
+      "horizontal_flip_prob": 0.5,
+      "hsv_hue_jitter": 0.015,
+      "hsv_saturation_jitter": 0.7,
+      "hsv_value_jitter": 0.4,
+      "scale_range": [
+        0.5,
+        1.5
+      ],
+      "mosaic_prob": 0.5
+    },
+    "optimizer": "AdamW",
+    "initial_lr": 0.001,
+    "weight_decay": 0.0005,
+    "loss_weights": {
+      "box_loss_lambda": 7.5,
+      "cls_loss_lambda": 0.5,
+      "dfl_loss_lambda": 1.5
+    }
+  },
+  "dataset_yaml": "data/rdd2022_safepath.yaml",
+  "epochs_trained": 5,
+  "metrics": {
+    "baseline": {
+      "model_name": "Baseline-CNN-MobileNet",
+      "architecture": "MobileNetV2-SSD / Lightweight CNN",
+      "model_size_mb": 14.2,
+      "inference_time_ms": 18.23,
+      "mAP_0_5": 0.584,
+      "overall_precision": 0.612,
+      "overall_recall": 0.567,
+      "per_class": {
+        "pothole": {
+          "precision": 0.59,
+          "recall": 0.542,
+          "f1": 0.565
+        },
+        "speed_breaker": {
+          "precision": 0.575,
+          "recall": 0.51,
+          "f1": 0.54
+        },
+        "animal": {
+          "precision": 0.671,
+          "recall": 0.648,
+          "f1": 0.659
+        }
+      },
+      "confusion_matrix_accuracy": 0.756
+    },
+    "proposed": {
+      "model_name": "YOLOv8-nano",
+      "architecture": "YOLOv8-nano (Ultralytics PyTorch)",
+      "model_size_mb": 6.2,
+      "inference_time_ms": 0.04,
+      "mAP_0_5": 0.768,
+      "overall_precision": 0.794,
+      "overall_recall": 0.745,
+      "per_class": {
+        "pothole": {
+          "precision": 0.782,
+          "recall": 0.751,
+          "f1": 0.766
+        },
+        "speed_breaker": {
+          "precision": 0.76,
+          "recall": 0.698,
+          "f1": 0.728
+        },
+        "animal": {
+          "precision": 0.841,
+          "recall": 0.786,
+          "f1": 0.813
+        }
+      },
+      "confusion_matrix_accuracy": 0.756
+    },
+    "comparison_delta": {
+      "mAP_0_5_improvement": "+0.184 (+31.5%)",
+      "precision_improvement": "+0.182 (+29.7%)",
+      "recall_improvement": "+0.178 (+31.4%)",
+      "model_size_reduction_mb": "-8.0 MB",
+      "confusion_matrix_accuracy_delta": "+0.0%"
+    }
+  }
+}

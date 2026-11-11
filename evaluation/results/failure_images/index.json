@@ -1,0 +1,192 @@
+{
+  "total_images": 20,
+  "categories": [
+    "shadows",
+    "night",
+    "rain",
+    "blur"
+  ],
+  "samples_per_category": 5,
+  "images": [
+    {
+      "filename": "failure_shadows_01.jpg",
+      "category": "shadows",
+      "sample_index": 1,
+      "ground_truth_count": 0,
+      "prediction_count": 1,
+      "explanation": "Tree canopy shadow falsely detected as pothole due to high local edge contrast.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_shadows_01.jpg"
+    },
+    {
+      "filename": "failure_shadows_02.jpg",
+      "category": "shadows",
+      "sample_index": 2,
+      "ground_truth_count": 0,
+      "prediction_count": 1,
+      "explanation": "Tree canopy shadow falsely detected as pothole due to high local edge contrast.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_shadows_02.jpg"
+    },
+    {
+      "filename": "failure_shadows_03.jpg",
+      "category": "shadows",
+      "sample_index": 3,
+      "ground_truth_count": 0,
+      "prediction_count": 1,
+      "explanation": "Tree canopy shadow falsely detected as pothole due to high local edge contrast.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_shadows_03.jpg"
+    },
+    {
+      "filename": "failure_shadows_04.jpg",
+      "category": "shadows",
+      "sample_index": 4,
+      "ground_truth_count": 0,
+      "prediction_count": 1,
+      "explanation": "Tree canopy shadow falsely detected as pothole due to high local edge contrast.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_shadows_04.jpg"
+    },
+    {
+      "filename": "failure_shadows_05.jpg",
+      "category": "shadows",
+      "sample_index": 5,
+      "ground_truth_count": 0,
+      "prediction_count": 1,
+      "explanation": "Tree canopy shadow falsely detected as pothole due to high local edge contrast.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_shadows_05.jpg"
+    },
+    {
+      "filename": "failure_night_01.jpg",
+      "category": "night",
+      "sample_index": 1,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Speed breaker missed in dim headlight periphery due to low signal-to-noise ratio.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_night_01.jpg"
+    },
+    {
+      "filename": "failure_night_02.jpg",
+      "category": "night",
+      "sample_index": 2,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Speed breaker missed in dim headlight periphery due to low signal-to-noise ratio.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_night_02.jpg"
+    },
+    {
+      "filename": "failure_night_03.jpg",
+      "category": "night",
+      "sample_index": 3,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Speed breaker missed in dim headlight periphery due to low signal-to-noise ratio.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_night_03.jpg"
+    },
+    {
+      "filename": "failure_night_04.jpg",
+      "category": "night",
+      "sample_index": 4,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Speed breaker missed in dim headlight periphery due to low signal-to-noise ratio.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_night_04.jpg"
+    },
+    {
+      "filename": "failure_night_05.jpg",
+      "category": "night",
+      "sample_index": 5,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Speed breaker missed in dim headlight periphery due to low signal-to-noise ratio.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_night_05.jpg"
+    },
+    {
+      "filename": "failure_rain_01.jpg",
+      "category": "rain",
+      "sample_index": 1,
+      "ground_truth_count": 1,
+      "prediction_count": 1,
+      "explanation": "Puddle mirror glare obscures true cavity boundary, distorting bounding box coordinates.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_rain_01.jpg"
+    },
+    {
+      "filename": "failure_rain_02.jpg",
+      "category": "rain",
+      "sample_index": 2,
+      "ground_truth_count": 1,
+      "prediction_count": 1,
+      "explanation": "Puddle mirror glare obscures true cavity boundary, distorting bounding box coordinates.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_rain_02.jpg"
+    },
+    {
+      "filename": "failure_rain_03.jpg",
+      "category": "rain",
+      "sample_index": 3,
+      "ground_truth_count": 1,
+      "prediction_count": 1,
+      "explanation": "Puddle mirror glare obscures true cavity boundary, distorting bounding box coordinates.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_rain_03.jpg"
+    },
+    {
+      "filename": "failure_rain_04.jpg",
+      "category": "rain",
+      "sample_index": 4,
+      "ground_truth_count": 1,
+      "prediction_count": 1,
+      "explanation": "Puddle mirror glare obscures true cavity boundary, distorting bounding box coordinates.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_rain_04.jpg"
+    },
+    {
+      "filename": "failure_rain_05.jpg",
+      "category": "rain",
+      "sample_index": 5,
+      "ground_truth_count": 1,
+      "prediction_count": 1,
+      "explanation": "Puddle mirror glare obscures true cavity boundary, distorting bounding box coordinates.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_rain_05.jpg"
+    },
+    {
+      "filename": "failure_blur_01.jpg",
+      "category": "blur",
+      "sample_index": 1,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Vehicle suspension vibration causes motion blur, dropping confidence below threshold.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_blur_01.jpg"
+    },
+    {
+      "filename": "failure_blur_02.jpg",
+      "category": "blur",
+      "sample_index": 2,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Vehicle suspension vibration causes motion blur, dropping confidence below threshold.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_blur_02.jpg"
+    },
+    {
+      "filename": "failure_blur_03.jpg",
+      "category": "blur",
+      "sample_index": 3,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Vehicle suspension vibration causes motion blur, dropping confidence below threshold.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_blur_03.jpg"
+    },
+    {
+      "filename": "failure_blur_04.jpg",
+      "category": "blur",
+      "sample_index": 4,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Vehicle suspension vibration causes motion blur, dropping confidence below threshold.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_blur_04.jpg"
+    },
+    {
+      "filename": "failure_blur_05.jpg",
+      "category": "blur",
+      "sample_index": 5,
+      "ground_truth_count": 1,
+      "prediction_count": 0,
+      "explanation": "Vehicle suspension vibration causes motion blur, dropping confidence below threshold.",
+      "saved_path": "C:\\Users\\Adarsh Kumar Singh\\Desktop\\SafePath\\evaluation\\results\\failure_images\\failure_blur_05.jpg"
+    }
+  ]
+}
