@@ -1,9 +1,10 @@
-"""Unit tests for SafePath RDD2022 dataset preparation pipeline (Module 1).
+"""Unit tests for SafePath unified dataset preparation pipeline (Module 1).
 
 Verifies:
-- Pascal VOC bounding box to YOLO coordinate normalization
-- XML label parsing and mapping to SafePath classes (pothole, speed_breaker, animal)
-- Dataset train/val splitting reproducibility
+- Pascal VOC and YOLO txt label parsing into 3 unified classes (pothole, speed_breaker, animal)
+- Corrupt/broken file detection and pruning
+- SHA-256 deduplication and leakage prevention
+- 3-way split (train/val/test) reproducibility with seed 42
 - YOLO dataset YAML configuration generation
 """
 
@@ -12,22 +13,19 @@ import unittest
 from pathlib import Path
 
 from detection.data_prep import (
-    CLASS_TO_IDX,
+    build_unified_dataset,
+    compute_image_hash,
     convert_voc_bbox_to_yolo,
     create_synthetic_rdd_sample,
     generate_yolo_dataset_yaml,
+    is_image_valid_and_not_broken,
     parse_voc_xml,
-    split_and_convert_dataset,
+    parse_yolo_txt,
 )
 
 
 class TestDataPrepPipeline(unittest.TestCase):
     def test_voc_to_yolo_normalization(self):
-        # 1280x720 image, box at [100, 100, 300, 200]
-        # x_center = 200 / 1280 = 0.15625
-        # y_center = 150 / 720 = 0.208333
-        # width = 200 / 1280 = 0.15625
-        # height = 100 / 720 = 0.138889
         size = (1280, 720)
         box = (100.0, 100.0, 300.0, 200.0)
         xc, yc, w, h = convert_voc_bbox_to_yolo(size, box)
@@ -90,40 +88,80 @@ class TestDataPrepPipeline(unittest.TestCase):
             self.assertIn("pothole", classes_found)
             self.assertIn("speed_breaker", classes_found)
 
-    def test_dataset_split_and_conversion_pipeline(self):
+    def test_yolo_txt_parsing(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            txt_path = Path(tmpdir) / "test_roboflow.txt"
+            txt_path.write_text("0 0.5 0.5 0.2 0.1\n1 0.4 0.6 0.3 0.15\n", encoding="utf-8")
+            source_classes = ["pothole", "speed_breaker"]
+            parsed = parse_yolo_txt(txt_path, source_class_names=source_classes)
+
+            self.assertEqual(len(parsed), 2)
+            self.assertEqual(parsed[0][0], "pothole")
+            self.assertEqual(parsed[1][0], "speed_breaker")
+
+    def test_corrupt_file_and_duplicate_filtering(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp_path = Path(tmpdir)
-            # Create synthetic raw dataset
-            raw_img_dir, raw_xml_dir = create_synthetic_rdd_sample(
-                output_dir=tmp_path / "raw",
-                num_samples=10,
+            # Create a 0-byte corrupt file
+            broken_file = tmp_path / "broken.jpg"
+            broken_file.write_bytes(b"")
+            is_valid, _ = is_image_valid_and_not_broken(broken_file)
+            self.assertFalse(is_valid)
+
+            # Test hash equality for duplicates
+            file1 = tmp_path / "img1.jpg"
+            file2 = tmp_path / "img2.jpg"
+            file1.write_bytes(b"image_content_bytes_123")
+            file2.write_bytes(b"image_content_bytes_123")
+            self.assertEqual(compute_image_hash(file1), compute_image_hash(file2))
+
+    def test_3_way_dataset_split_and_rebuild(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = Path(tmpdir)
+            raw_dir = tmp_path / "raw"
+            img_dir, xml_dir = create_synthetic_rdd_sample(
+                output_dir=raw_dir,
+                num_samples=20,
+                random_seed=42,
+            )
+            # Place xml files alongside images
+            for x in xml_dir.glob("*.xml"):
+                (img_dir / x.name).write_text(x.read_text(encoding="utf-8"), encoding="utf-8")
+
+            # Add an intentional duplicate image to verify deduplication
+            dup_img = img_dir / "duplicate_test.jpg"
+            first_img = list(img_dir.glob("sample_*.jpg"))[0]
+            dup_img.write_bytes(first_img.read_bytes())
+            dup_xml = img_dir / "duplicate_test.xml"
+            dup_xml.write_text((img_dir / f"{first_img.stem}.xml").read_text(encoding="utf-8"), encoding="utf-8")
+
+            out_dir = tmp_path / "processed" / "yolo"
+            summary = build_unified_dataset(
+                raw_dir=img_dir,
+                output_dir=out_dir,
+                train_ratio=0.70,
+                val_ratio=0.15,
+                test_ratio=0.15,
                 random_seed=42,
             )
 
-            # Convert to YOLO format
-            yolo_out = tmp_path / "yolo_dataset"
-            summary = split_and_convert_dataset(
-                raw_images_dir=raw_img_dir,
-                raw_xml_dir=raw_xml_dir,
-                output_yolo_dir=yolo_out,
-                val_split_ratio=0.2,
-                random_seed=42,
-            )
+            # Verification
+            self.assertEqual(summary["duplicates_removed"], 1)
+            self.assertEqual(summary["clean_samples"], 20)
+            self.assertEqual(summary["splits"]["train"], 14)
+            self.assertEqual(summary["splits"]["val"], 3)
+            self.assertEqual(summary["splits"]["test"], 3)
 
-            self.assertEqual(summary["total_paired"], 10)
-            self.assertEqual(summary["val_samples"], 2)
-            self.assertEqual(summary["train_samples"], 8)
+            # Check that files exist in all 3 splits
+            for split in ["train", "val", "test"]:
+                lbls = list((out_dir / "labels" / split).glob("*.txt"))
+                imgs = list((out_dir / "images" / split).glob("*.jpg"))
+                self.assertGreater(len(lbls), 0)
+                self.assertEqual(len(lbls), len(imgs))
 
-            # Check that files exist in appropriate directories
-            train_labels = list((yolo_out / "labels" / "train").glob("*.txt"))
-            val_labels = list((yolo_out / "labels" / "val").glob("*.txt"))
-            self.assertEqual(len(train_labels), 8)
-            self.assertEqual(len(val_labels), 2)
-
-            # Inspect label content
-            sample_label_text = train_labels[0].read_text(encoding="utf-8").strip()
-            parts = sample_label_text.split()
-            self.assertIn(int(parts[0]), CLASS_TO_IDX.values())
+            # Check class instance counts
+            counts = summary["class_instance_counts"]
+            self.assertGreater(counts["total"]["pothole"] + counts["total"]["speed_breaker"] + counts["total"]["animal"], 0)
 
     def test_yaml_config_generation(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -135,6 +173,8 @@ class TestDataPrepPipeline(unittest.TestCase):
             self.assertTrue(yaml_path.exists())
             content = yaml_path.read_text(encoding="utf-8")
             self.assertIn("train: images/train", content)
+            self.assertIn("val: images/val", content)
+            self.assertIn("test: images/test", content)
             self.assertIn("nc: 3", content)
             self.assertIn("names: ['pothole', 'speed_breaker', 'animal']", content)
 
