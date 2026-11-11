@@ -10,9 +10,13 @@ from pathlib import Path
 def hello_app() -> str:
     """Print application module readiness."""
     module_name = "App & UI Module (Owner D)"
-    sample_dir = Path(__file__).resolve().parent.parent / "data" / "sample"
-    routes_exist = (sample_dir / "routes.json").exists()
-    return f"[{module_name}] Ready. UI services configured (Sample routes available: {routes_exist})."
+    base = Path(__file__).resolve().parent.parent / "data"
+    proc_routes = (base / "processed" / "routes.json").exists()
+    sample_routes = (base / "sample" / "routes.json").exists()
+    return (
+        f"[{module_name}] Ready. Streamlit UI configured at app/main.py "
+        f"(Processed routes: {proc_routes}, Sample routes: {sample_routes})."
+    )
 
 
 def main():
