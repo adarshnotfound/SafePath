@@ -20,14 +20,15 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from typing import Dict, Any, List, Tuple
+from typing import Any, Dict, List, Tuple
+
 import numpy as np
 from scipy.stats import pearsonr, spearmanr
 from sklearn.model_selection import KFold
 
 from fuzzy.baseline_weighted import WeightedSumBaselineEngine
-from fuzzy.mamdani_engine import MamdaniFuzzyEngine
 from fuzzy.ga_tuner import FuzzyGeneticTuner, survey_rating_to_safety_score
+from fuzzy.mamdani_engine import MamdaniFuzzyEngine
 
 
 def load_dataset(
@@ -300,8 +301,8 @@ if __name__ == "__main__":
     results_path = repo_root / "evaluation" / "results" / "fuzzy_comparison.json"
     plot_path = repo_root / "evaluation" / "results" / "fuzzy_predicted_vs_rated.png"
 
-    print(f"[Evaluation] Running comparative fuzzy benchmark with plotting...")
+    print("[Evaluation] Running comparative fuzzy benchmark with plotting...")
     report = run_comparative_evaluation(features_path, ratings_path, results_path, plot_path)
-    print(f"[Evaluation] Finished. Summary:")
+    print("[Evaluation] Finished. Summary:")
     print(json.dumps(report["results"], indent=2))
     print(f"[Evaluation] Results saved to: {results_path}")

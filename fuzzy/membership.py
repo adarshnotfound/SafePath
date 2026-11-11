@@ -4,8 +4,10 @@ Implements triangular (trimf) and trapezoidal (trapmf) membership calculations,
 fuzzification of raw numeric/categorical inputs, and linguistic variable management.
 """
 
-from typing import Dict, List, Union, Tuple
+from typing import Dict, List, Union
+
 import numpy as np
+
 from fuzzy.config import DEFAULT_MEMBERSHIP_CONFIG
 
 

@@ -9,7 +9,7 @@ import copy
 import random
 import sys
 from pathlib import Path
-from typing import Dict, Any, List, Tuple
+from typing import Any, Dict, List, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
@@ -18,7 +18,7 @@ if str(REPO_ROOT) not in sys.path:
 import numpy as np
 
 try:
-    from deap import base, creator, tools, algorithms
+    import deap  # noqa: F401
     HAS_DEAP = True
 except ImportError:
     HAS_DEAP = False

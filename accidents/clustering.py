@@ -496,8 +496,8 @@ if __name__ == "__main__":
     print(f"  FPC (Fuzzy Partition)  : {report['fuzzy_c_means']['fuzzy_partition_coefficient']}")
     print("-" * 65)
     print(f"Selected Production Model : {report['soft_computing_insights']['selected_production_algorithm']}")
-    print(f"Generated Hotspots CSV    : data/processed/accident_hotspots.csv")
-    print(f"Metrics Report Saved      : evaluation/results/accident_clustering_comparison.json")
-    print(f"Interactive Folium Map    : evaluation/plots/accident_hotspots_map.html")
+    print("Generated Hotspots CSV    : data/processed/accident_hotspots.csv")
+    print("Metrics Report Saved      : evaluation/results/accident_clustering_comparison.json")
+    print("Interactive Folium Map    : evaluation/plots/accident_hotspots_map.html")
     print("=" * 65)
 

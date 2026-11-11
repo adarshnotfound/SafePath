@@ -6,16 +6,6 @@ Includes:
 - Genetic Algorithm decay rate optimization using DEAP (B2-GA)
 """
 
-from hazard_map.living_map import (
-    HazardRecord,
-    LivingHazardMap,
-    LivingMapConfig,
-    haversine_distance_meters,
-    load_detections_from_csv,
-    merge_detections_dbscan,
-    project_latlon_to_xy,
-    project_xy_to_latlon,
-)
 from hazard_map.evaluate import (
     LivingMapEvaluationMetrics,
     evaluate_living_map,
@@ -27,6 +17,16 @@ from hazard_map.ga_optimizer import (
     plot_ga_convergence_curve,
     run_full_ga_pipeline,
     run_genetic_algorithm,
+)
+from hazard_map.living_map import (
+    HazardRecord,
+    LivingHazardMap,
+    LivingMapConfig,
+    haversine_distance_meters,
+    load_detections_from_csv,
+    merge_detections_dbscan,
+    project_latlon_to_xy,
+    project_xy_to_latlon,
 )
 from hazard_map.simulated_drive import (
     DetectionRecord,

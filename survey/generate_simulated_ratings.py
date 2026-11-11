@@ -6,9 +6,9 @@ Fixed random seeds ensure reproducible evaluation. Outputs are strictly labeled 
 """
 
 import csv
-import json
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict
+
 import numpy as np
 
 

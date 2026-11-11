@@ -9,9 +9,9 @@ Implements:
 Strictly adheres to Section 8 contracts.
 """
 
-from typing import Dict, Any, List, Tuple, Optional
 import sys
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
@@ -20,11 +20,11 @@ if str(REPO_ROOT) not in sys.path:
 import numpy as np
 
 from fuzzy.config import (
-    DEFAULT_MEMBERSHIP_CONFIG,
     DEFAULT_MAMDANI_RULES,
+    DEFAULT_MEMBERSHIP_CONFIG,
     SAFETY_LEVEL_THRESHOLDS,
 )
-from fuzzy.membership import FuzzySystemVariables, trimf, trapmf
+from fuzzy.membership import FuzzySystemVariables, trapmf, trimf
 
 
 class MamdaniFuzzyEngine:

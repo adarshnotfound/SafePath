@@ -423,4 +423,4 @@ if __name__ == "__main__":
     dets, gts, meta = run_generator()
     print(f"Generated {len(dets)} simulated detections across {meta['num_drives']} drives.")
     print(f"Ground-truth hazards tracked: {len(gts)}")
-    print(f"Metrics written to evaluation/results/simulated_drives_metrics.json")
+    print("Metrics written to evaluation/results/simulated_drives_metrics.json")

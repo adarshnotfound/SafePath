@@ -13,13 +13,13 @@ from __future__ import annotations
 
 import copy
 import json
-import math
 import random
-from dataclasses import asdict, dataclass
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import matplotlib
+
 matplotlib.use("Agg")  # Non-interactive backend for headless execution
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,14 +27,12 @@ from deap import base, creator, tools
 
 from hazard_map.living_map import (
     DetectionItem,
-    HazardRecord,
     LivingHazardMap,
     LivingMapConfig,
     TypePersistenceConfig,
     haversine_distance_meters,
 )
 from hazard_map.simulated_drive import (
-    GroundTruthHazard,
     generate_ground_truth_hazards,
     simulate_multi_drive_detections,
 )

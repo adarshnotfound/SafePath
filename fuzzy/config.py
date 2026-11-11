@@ -5,7 +5,7 @@ rule base (Mamdani IF-THEN rules), feature normalization bounds, and mode weight
 """
 
 from dataclasses import dataclass
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 @dataclass

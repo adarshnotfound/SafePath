@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import csv
 import json
-import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -311,5 +310,5 @@ if __name__ == "__main__":
     print(f"Active Hazards Tracked       : {eval_metrics.active_hazards_count}")
     print(f"Repaired Hazards             : {eval_metrics.repaired_hazards_count}")
     print(f"Decayed Hazards              : {eval_metrics.decayed_hazards_count}")
-    print(f"Metrics written to evaluation/results/hazard_merge_metrics.json")
+    print("Metrics written to evaluation/results/hazard_merge_metrics.json")
     print("=" * 60)

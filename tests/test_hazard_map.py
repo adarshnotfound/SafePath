@@ -6,19 +6,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from hazard_map.living_map import (
-    DetectionItem,
-    LivingHazardMap,
-    LivingMapConfig,
-    haversine_distance_meters,
-    merge_detections_dbscan,
-)
 from hazard_map.evaluate import run_pipeline_and_evaluate
 from hazard_map.ga_optimizer import (
     evaluate_scenario,
     individual_to_config,
     plot_ga_convergence_curve,
     run_genetic_algorithm,
+)
+from hazard_map.living_map import (
+    DetectionItem,
+    LivingHazardMap,
+    LivingMapConfig,
+    merge_detections_dbscan,
 )
 from hazard_map.simulated_drive import (
     add_gps_noise,

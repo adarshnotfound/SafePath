@@ -4,18 +4,17 @@ Verifies response cleaning, validation bounds, inter-rater reliability calculati
 and adherence to Section 8 survey_ratings.csv contracts.
 """
 
-import unittest
-import tempfile
 import csv
-from pathlib import Path
 import sys
+import tempfile
+import unittest
+from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from survey.clean_survey import clean_survey_responses, compute_inter_rater_agreement
-from survey.generate_simulated_ratings import generate_simulated_survey
 
 
 class TestSurveyModule(unittest.TestCase):

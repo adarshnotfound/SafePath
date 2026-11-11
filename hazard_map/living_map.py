@@ -19,15 +19,14 @@ from __future__ import annotations
 import csv
 import json
 import math
-from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 # Try to import sklearn DBSCAN, provide pure-Python fallback for resilient portability
 try:
-    from sklearn.cluster import DBSCAN
     import numpy as np
+    from sklearn.cluster import DBSCAN
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False

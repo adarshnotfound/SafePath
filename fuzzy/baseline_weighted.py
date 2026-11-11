@@ -5,15 +5,16 @@ a 0-100 safety score, classification level, and plain-language explanation.
 Strictly adheres to Section 8 contracts.
 """
 
-from typing import Dict, Any, List, Tuple
 import sys
 from pathlib import Path
+from typing import Any, Dict, List
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 import numpy as np
+
 from fuzzy.config import (
     DEFAULT_FEATURE_WEIGHTS,
     PERSONAL_SAFETY_FEATURE_WEIGHTS,

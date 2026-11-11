@@ -9,7 +9,6 @@ import argparse
 import csv
 import sys
 from pathlib import Path
-from typing import List, Dict, Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
@@ -17,7 +16,6 @@ if str(REPO_ROOT) not in sys.path:
 
 from fuzzy.baseline_weighted import WeightedSumBaselineEngine
 from fuzzy.mamdani_engine import MamdaniFuzzyEngine
-from fuzzy.ga_tuner import FuzzyGeneticTuner
 
 
 def score_features_file(

@@ -4,19 +4,17 @@ Includes 5 hand-checked test scenarios (Task C1), membership function verificati
 contract compliance verification, and personal safety mode testing.
 """
 
-import unittest
-import numpy as np
 import sys
+import unittest
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from fuzzy.membership import trimf, trapmf, FuzzySystemVariables
 from fuzzy.baseline_weighted import WeightedSumBaselineEngine
 from fuzzy.mamdani_engine import MamdaniFuzzyEngine
-from fuzzy.config import DEFAULT_MEMBERSHIP_CONFIG
+from fuzzy.membership import trapmf, trimf
 
 
 class TestFuzzyEngine(unittest.TestCase):

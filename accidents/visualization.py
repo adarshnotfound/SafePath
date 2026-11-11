@@ -13,7 +13,6 @@ Owner: Member B (Hazard map and accident-data lead)
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 

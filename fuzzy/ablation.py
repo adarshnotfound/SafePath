@@ -8,11 +8,10 @@ Implements:
 """
 
 import copy
-import csv
 import json
 import sys
 from pathlib import Path
-from typing import Dict, Any, List, Tuple
+from typing import Any, Dict, List
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
@@ -21,10 +20,8 @@ if str(REPO_ROOT) not in sys.path:
 import numpy as np
 from scipy.stats import spearmanr
 
-from fuzzy.baseline_weighted import WeightedSumBaselineEngine
+from fuzzy.evaluate import compute_metrics, load_dataset
 from fuzzy.mamdani_engine import MamdaniFuzzyEngine
-from fuzzy.evaluate import load_dataset, compute_metrics
-
 
 # Neutral default values for factor removal
 NEUTRAL_DEFAULTS = {
