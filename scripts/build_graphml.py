@@ -1,11 +1,11 @@
 """Build prayagraj_drive.graphml from authentic street segments."""
 
-import json
 from pathlib import Path
+
 import networkx as nx
+import osmnx as ox
 import pandas as pd
 from shapely import wkt
-import osmnx as ox
 
 REPO_ROOT = Path(__file__).resolve().parent
 METADATA_FILE = REPO_ROOT / "data" / "processed" / "segment_metadata.csv"
