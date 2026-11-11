@@ -62,64 +62,90 @@ def verify_file_contracts() -> bool:
 
 
 def test_routing_pipeline():
-    """Run route generation between Civil Lines and Sangam."""
+    """Run route generation between Civil Lines and Sangam, with fallback to sample fixture."""
     print_section("STEP 2: SAFEPATH ROUTER EXECUTION & CONTRACT EXPORT")
 
-    from routing.router import SafePathRouter
+    graph_path = DATA_DIR / "raw" / "prayagraj_drive.graphml"
 
-    t0 = time.time()
-    print("  Initializing SafePathRouter from cached Prayagraj network...")
-    router = SafePathRouter.from_files()
-    init_time = time.time() - t0
-    print(f"  Router ready in {init_time:.2f}s (16,672 nodes, 43,328 edges).")
+    if graph_path.exists():
+        from routing.router import SafePathRouter
 
-    # Define test journey across Prayagraj: Civil Lines -> Triveni Sangam
-    orig_name = "Civil Lines Commercial Hub"
-    orig_lat, orig_lon = 25.4526, 81.8345
-    dest_name = "Triveni Sangam (Kumbh Grounds)"
-    dest_lat, dest_lon = 25.4290, 81.8840
+        t0 = time.time()
+        print("  Initializing SafePathRouter from cached Prayagraj network...")
+        router = SafePathRouter.from_files()
+        init_time = time.time() - t0
+        print(f"  Router ready in {init_time:.2f}s.")
 
-    print(f"\n  Query: {orig_name} ({orig_lat}, {orig_lon})")
-    print(f"     ->  {dest_name} ({dest_lat}, {dest_lon})")
+        # Define test journey across Prayagraj: Civil Lines -> Triveni Sangam
+        orig_name = "Civil Lines Commercial Hub"
+        orig_lat, orig_lon = 25.4526, 81.8345
+        dest_name = "Triveni Sangam (Kumbh Grounds)"
+        dest_lat, dest_lon = 25.4290, 81.8840
 
-    t1 = time.time()
-    alternatives = router.route_by_coordinates(
-        start_lat=orig_lat,
-        start_lon=orig_lon,
-        end_lat=dest_lat,
-        end_lon=dest_lon,
-        max_routes=3,
-    )
-    route_calc_time = time.time() - t1
-    print(f"  Computed {len(alternatives)} diverse route alternatives in {route_calc_time:.3f}s.\n")
+        print(f"\n  Query: {orig_name} ({orig_lat}, {orig_lon})")
+        print(f"     ->  {dest_name} ({dest_lat}, {dest_lon})")
 
-    # Display ranked routes
-    print(f"  {'Route ID':<10} {'Rating':<10} {'Safety':<10} {'Worst Seg':<12} {'Time (min)':<12} {'Dist (km)':<10}")
-    print("  " + "-" * 66)
+        t1 = time.time()
+        alternatives = router.route_by_coordinates(
+            start_lat=orig_lat,
+            start_lon=orig_lon,
+            end_lat=dest_lat,
+            end_lon=dest_lon,
+            max_routes=3,
+        )
+        route_calc_time = time.time() - t1
+        print(f"  Computed {len(alternatives)} diverse route alternatives in {route_calc_time:.3f}s.\n")
 
-    for alt in alternatives:
-        rid = alt.route_id
-        sc = alt.aggregate_safety
-        w_sc = alt.worst_segment_score
-        t_min = alt.total_time / 60.0
-        d_km = alt.total_length / 1000.0
+        # Display ranked routes
+        print(f"  {'Route ID':<10} {'Rating':<10} {'Safety':<10} {'Worst Seg':<12} {'Time (min)':<12} {'Dist (km)':<10}")
+        print("  " + "-" * 66)
 
-        if sc >= 70.0:
-            rating = "Safe"
-        elif sc >= 40.0:
-            rating = "Caution"
-        else:
-            rating = "Risky"
+        for alt in alternatives:
+            rid = alt.route_id
+            sc = alt.aggregate_safety
+            w_sc = alt.worst_segment_score
+            t_min = alt.total_time / 60.0
+            d_km = alt.total_length / 1000.0
 
-        print(f"  {rid:<10} {rating:<10} {sc:<10.1f} {w_sc:<12.1f} {t_min:<12.1f} {d_km:<10.2f}")
-        print(f"   └─ Explanation: {alt.explanation}\n")
+            if sc >= 70.0:
+                rating = "Safe"
+            elif sc >= 40.0:
+                rating = "Caution"
+            else:
+                rating = "Risky"
 
-    # Validate contract serialization
-    out_path = DATA_DIR / "processed" / "routes.json"
-    router.export_routes_json(alternatives, out_path)
+            print(f"  {rid:<10} {rating:<10} {sc:<10.1f} {w_sc:<12.1f} {t_min:<12.1f} {d_km:<10.2f}")
+            print(f"   └─ Explanation: {alt.explanation}\n")
 
-    with open(out_path, "r", encoding="utf-8") as f:
-        loaded = json.load(f)
+        # Validate contract serialization
+        out_path = DATA_DIR / "processed" / "routes.json"
+        router.export_routes_json(alternatives, out_path)
+
+        with open(out_path, "r", encoding="utf-8") as f:
+            loaded = json.load(f)
+    else:
+        print("  [NOTE] Prayagraj road network graph cache not found at data/raw/prayagraj_drive.graphml.")
+        print("         To download live OSMnx Prayagraj graph: python -m routing.osm_network")
+        print("  Loading Section 8 sample route fixture from data/sample/routes.json...")
+        sample_path = DATA_DIR / "sample" / "routes.json"
+        with open(sample_path, "r", encoding="utf-8") as f:
+            loaded = json.load(f)
+
+        print(f"\n  Loaded {len(loaded)} sample route alternatives for demonstration:")
+        print(f"  {'Route ID':<10} {'Rating':<10} {'Safety':<10} {'Worst Seg':<12} {'Time (min)':<12} {'Dist (km)':<10}")
+        print("  " + "-" * 66)
+        for r in loaded:
+            sc = r.get("aggregate_safety", 50.0)
+            rating = "Safe" if sc >= 70 else ("Caution" if sc >= 40 else "Risky")
+            t_min = r.get("total_time", 0.0) / 60.0
+            d_km = r.get("total_length", 0.0) / 1000.0
+            print(f"  {r['route_id']:<10} {rating:<10} {sc:<10.1f} {r.get('worst_segment_score', 0):<12.1f} {t_min:<12.1f} {d_km:<10.2f}")
+            print(f"   └─ Explanation: {r.get('explanation', '')}\n")
+
+        out_path = DATA_DIR / "processed" / "routes.json"
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(loaded, f, indent=2)
 
     req_keys = {"route_id", "segment_ids", "total_time", "total_length", "aggregate_safety", "worst_segment_score", "explanation"}
     for idx, r in enumerate(loaded):
