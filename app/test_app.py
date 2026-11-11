@@ -141,3 +141,59 @@ class TestMapUtils:
         assert isinstance(m, folium.Map)
         html_str = m.get_root().render()
         assert "seg_A" in html_str or "OpenStreetMap" in html_str
+
+    def test_all_alternative_routes_colored_on_map(self):
+        """Verify that all alternative routes are rendered with distinct colors on the map."""
+        cache = SegmentGeometryCache(Path("non_existent_file.csv"))
+
+        routes = [
+            {
+                "route_id": "route_A",
+                "segment_ids": ["seg_105", "seg_107"],
+                "total_time": 800.0,
+                "total_length": 900.0,
+                "aggregate_safety": 85.0,
+                "worst_segment_score": 75.0,
+                "explanation": "Safest route",
+                "coordinates": [(25.4526, 81.8345), (25.4550, 81.8430), (25.4290, 81.8840)],
+            },
+            {
+                "route_id": "route_B",
+                "segment_ids": ["seg_101", "seg_102"],
+                "total_time": 600.0,
+                "total_length": 700.0,
+                "aggregate_safety": 42.0,
+                "worst_segment_score": 30.0,
+                "explanation": "Fastest route",
+                "coordinates": [(25.4526, 81.8345), (25.4500, 81.8390), (25.4290, 81.8840)],
+            },
+            {
+                "route_id": "route_C",
+                "segment_ids": ["seg_101", "seg_104"],
+                "total_time": 700.0,
+                "total_length": 800.0,
+                "aggregate_safety": 60.0,
+                "worst_segment_score": 50.0,
+                "explanation": "Balanced route",
+                "coordinates": [(25.4526, 81.8345), (25.4440, 81.8480), (25.4290, 81.8840)],
+            },
+        ]
+
+        m = build_route_folium_map(
+            routes=routes,
+            selected_route_id="route_A",
+            geom_cache=cache,
+            scores_dict={},
+            start_point=(25.4526, 81.8345),
+            end_point=(25.4290, 81.8840),
+        )
+
+        html_str = m.get_root().render()
+        # Verify route identifiers and alternative color codes appear in HTML
+        assert "route_A" in html_str
+        assert "route_B" in html_str
+        assert "route_C" in html_str
+        assert "#2e7d32" in html_str  # Green (Route A)
+        assert "#e65100" in html_str  # Orange (Route B)
+        assert "#1565c0" in html_str  # Blue (Route C)
+
