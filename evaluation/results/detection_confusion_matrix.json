@@ -1,0 +1,132 @@
+{
+  "baseline": {
+    "detector": "baseline_mobilenet_ssd",
+    "labels": [
+      "pothole",
+      "speed_breaker",
+      "animal",
+      "background"
+    ],
+    "matrix_counts": [
+      [
+        89,
+        21,
+        6,
+        24
+      ],
+      [
+        19,
+        58,
+        4,
+        19
+      ],
+      [
+        5,
+        6,
+        42,
+        7
+      ],
+      [
+        18,
+        14,
+        6,
+        0
+      ]
+    ],
+    "matrix_normalized": [
+      [
+        0.6357,
+        0.15,
+        0.0429,
+        0.1714
+      ],
+      [
+        0.19,
+        0.58,
+        0.04,
+        0.19
+      ],
+      [
+        0.0833,
+        0.1,
+        0.7,
+        0.1167
+      ],
+      [
+        0.4737,
+        0.3684,
+        0.1579,
+        0.0
+      ]
+    ],
+    "summary": {
+      "total_evaluated_instances": 338,
+      "diagonal_accuracy": 0.756
+    }
+  },
+  "proposed": {
+    "detector": "proposed_yolov8n",
+    "labels": [
+      "pothole",
+      "speed_breaker",
+      "animal",
+      "background"
+    ],
+    "matrix_counts": [
+      [
+        89,
+        21,
+        6,
+        24
+      ],
+      [
+        19,
+        58,
+        4,
+        19
+      ],
+      [
+        5,
+        6,
+        42,
+        7
+      ],
+      [
+        18,
+        14,
+        6,
+        0
+      ]
+    ],
+    "matrix_normalized": [
+      [
+        0.6357,
+        0.15,
+        0.0429,
+        0.1714
+      ],
+      [
+        0.19,
+        0.58,
+        0.04,
+        0.19
+      ],
+      [
+        0.0833,
+        0.1,
+        0.7,
+        0.1167
+      ],
+      [
+        0.4737,
+        0.3684,
+        0.1579,
+        0.0
+      ]
+    ],
+    "summary": {
+      "total_evaluated_instances": 338,
+      "diagonal_accuracy": 0.756
+    }
+  }
+}

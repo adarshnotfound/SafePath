@@ -1,0 +1,213 @@
+{
+  "dataset": {
+    "name": "UK STATS19 (Department for Transport)",
+    "provenance": "substitute",
+    "total_records": 3000,
+    "splits": {
+      "train_samples": 2099,
+      "val_samples": 451,
+      "test_samples": 450
+    },
+    "features": [
+      "speed_limit",
+      "road_type_motorway",
+      "road_type_primary",
+      "road_type_residential",
+      "road_type_secondary",
+      "road_type_tertiary",
+      "road_type_unclassified",
+      "time_of_day_day",
+      "time_of_day_dusk",
+      "time_of_day_night",
+      "lighting_dark",
+      "lighting_dim",
+      "lighting_well_lit",
+      "weather_fine",
+      "weather_fog",
+      "weather_rain",
+      "weather_snow",
+      "junction_no",
+      "junction_yes"
+    ],
+    "classes": [
+      "slight",
+      "serious",
+      "fatal"
+    ],
+    "class_weights": {
+      "0": 0.45521578833224896,
+      "1": 1.469887955182073,
+      "2": 8.135658914728682
+    }
+  },
+  "models": {
+    "baseline_unweighted_logistic_regression": {
+      "name": "Logistic Regression (Unweighted)",
+      "type": "baseline",
+      "imbalance_handling": "none",
+      "metrics": {
+        "accuracy": 0.7311,
+        "macro_f1": 0.2881,
+        "weighted_f1": 0.6242,
+        "per_class": {
+          "slight": {
+            "class_id": 0,
+            "precision": 0.7354,
+            "recall": 0.9939,
+            "f1_score": 0.8454,
+            "support": 330
+          },
+          "serious": {
+            "class_id": 1,
+            "precision": 0.25,
+            "recall": 0.0098,
+            "f1_score": 0.0189,
+            "support": 102
+          },
+          "fatal": {
+            "class_id": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "support": 18
+          }
+        },
+        "confusion_matrix": [
+          [
+            328,
+            2,
+            0
+          ],
+          [
+            101,
+            1,
+            0
+          ],
+          [
+            17,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    "baseline_weighted_logistic_regression": {
+      "name": "Logistic Regression (Class-Weighted Balanced)",
+      "type": "baseline",
+      "imbalance_handling": "class_weight='balanced'",
+      "metrics": {
+        "accuracy": 0.4911,
+        "macro_f1": 0.3736,
+        "weighted_f1": 0.5549,
+        "per_class": {
+          "slight": {
+            "class_id": 0,
+            "precision": 0.8084,
+            "recall": 0.5242,
+            "f1_score": 0.636,
+            "support": 330
+          },
+          "serious": {
+            "class_id": 1,
+            "precision": 0.3509,
+            "recall": 0.3922,
+            "f1_score": 0.3704,
+            "support": 102
+          },
+          "fatal": {
+            "class_id": 2,
+            "precision": 0.0656,
+            "recall": 0.4444,
+            "f1_score": 0.1143,
+            "support": 18
+          }
+        },
+        "confusion_matrix": [
+          [
+            173,
+            69,
+            88
+          ],
+          [
+            36,
+            40,
+            26
+          ],
+          [
+            5,
+            5,
+            8
+          ]
+        ]
+      }
+    },
+    "proposed_weighted_mlp": {
+      "name": "Multi-Layer Perceptron (Class-Weighted)",
+      "type": "proposed",
+      "architecture": "Linear(64) -> BatchNorm -> ReLU -> Dropout(0.2) -> Linear(32) -> BatchNorm -> ReLU -> Dropout(0.2) -> Linear(3)",
+      "imbalance_handling": "weighted_cross_entropy_loss",
+      "metrics": {
+        "accuracy": 0.4689,
+        "macro_f1": 0.3473,
+        "weighted_f1": 0.5346,
+        "per_class": {
+          "slight": {
+            "class_id": 0,
+            "precision": 0.7793,
+            "recall": 0.5242,
+            "f1_score": 0.6268,
+            "support": 330
+          },
+          "serious": {
+            "class_id": 1,
+            "precision": 0.3333,
+            "recall": 0.2941,
+            "f1_score": 0.3125,
+            "support": 102
+          },
+          "fatal": {
+            "class_id": 2,
+            "precision": 0.058,
+            "recall": 0.4444,
+            "f1_score": 0.1026,
+            "support": 18
+          }
+        },
+        "confusion_matrix": [
+          [
+            173,
+            56,
+            101
+          ],
+          [
+            43,
+            30,
+            29
+          ],
+          [
+            6,
+            4,
+            8
+          ]
+        ]
+      }
+    }
+  },
+  "summary_comparison": {
+    "accuracy": {
+      "baseline_unweighted": 0.7311,
+      "baseline_weighted": 0.4911,
+      "proposed_mlp": 0.4689
+    },
+    "macro_f1": {
+      "baseline_unweighted": 0.2881,
+      "baseline_weighted": 0.3736,
+      "proposed_mlp": 0.3473
+    },
+    "fatal_recall": {
+      "baseline_unweighted": 0.0,
+      "baseline_weighted": 0.4444,
+      "proposed_mlp": 0.4444
+    }
+  }
+}
