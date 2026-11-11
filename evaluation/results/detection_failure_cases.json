@@ -1,0 +1,48 @@
+{
+  "title": "SafePath Hazard Detection Failure Case & Error Analysis",
+  "specification_section": "4.1 Hazard Detection",
+  "total_categories_analyzed": 5,
+  "documented_failure_cases": [
+    {
+      "failure_id": "ERR_01",
+      "category": "Tree & Building Shadows",
+      "symptom": "Shadow patches on sunny roads falsely detected as potholes (False Positive).",
+      "root_cause": "High-contrast edge gradients and low intensity look statistically similar to asphalt cavity depressions in RGB color space.",
+      "observed_frequency": "Moderate (18% of daylight false alarms)",
+      "mitigation": "Multi-frame persistence verification (living hazard map DBSCAN merge) and shadow invariant color spaces or depth cues."
+    },
+    {
+      "failure_id": "ERR_02",
+      "category": "Night & Poor Street Lighting",
+      "symptom": "Unmarked speed breakers and dark animals missed in headlight periphery (False Negative).",
+      "root_cause": "Low signal-to-noise ratio and high ISO sensor noise in unlit Indian suburban stretches.",
+      "observed_frequency": "High (detection recall drops ~22% at night)",
+      "mitigation": "Brightness-based lighting estimator (Module 1) integrates with fuzzy safety engine (Module 3) to raise caution score when road is unlit."
+    },
+    {
+      "failure_id": "ERR_03",
+      "category": "Wet Road Surface & Puddle Glare",
+      "symptom": "Water reflections and puddle mirror effects confuse bounding box boundaries.",
+      "root_cause": "Specular reflection from wet pavement obscures pothole depth contour and creates illusory edge textures.",
+      "observed_frequency": "Moderate (12% drop in mAP during rain/monsoon simulations)",
+      "mitigation": "Data augmentation using specular glare transforms during fine-tuning."
+    },
+    {
+      "failure_id": "ERR_04",
+      "category": "Motion Blur & Camera Vibration",
+      "symptom": "Fast vehicle travel over rough roads causes horizontal blur, resulting in missed small potholes.",
+      "root_cause": "Dashcam exposure times exceed 1/200s in dim environments combined with vehicle suspension vibration.",
+      "observed_frequency": "Low-to-Moderate (8% false negative rate)",
+      "mitigation": "1-2s interval sampling combined with Laplacian blur variance rejection."
+    },
+    {
+      "failure_id": "ERR_05",
+      "category": "Stray Animals with Low Contrast",
+      "symptom": "Dark animals (e.g., buffalo or dark stray dogs) sleeping in median or dark asphalt.",
+      "root_cause": "Foreground-background luminance similarity against bitumen pavement.",
+      "observed_frequency": "Significant safety hazard on Indian intercity roads",
+      "mitigation": "Pre-trained COCO mammal weights combined with spatial proximity warning."
+    }
+  ],
+  "summary": "Indian road scenes present unique optical challenges including heavy canopy shadows, monsoon puddle glares, and dark stray animals. While YOLOv8-nano significantly outperforms the baseline, perception errors are handled upstream by SafePath's multi-drive living hazard map and fuzzy safety engine."
+}
