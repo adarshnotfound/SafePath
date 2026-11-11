@@ -11,6 +11,8 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
+| 2026-11-11 | Antigravity | `/detection` | Implemented video drive processor, trajectory waypoint interpolation, and Section 4.2 GPS noise modeling | Team Owner A |
+| 2026-11-11 | Antigravity | `/detection` | Implemented LightingCNN classifier, baseline vs CNN glare benchmark, and Section 3 stretch goal | Team Owner A |
 
 ---
 
@@ -20,6 +22,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | :--- | :--- | :--- | :--- | :--- |
 | *e.g., YOLOv8-nano* | *Ultralytics* | *yolov8n.pt (COCO)* | *Hazard detection (potholes, speed breakers, animals)* | *Fine-tuned on RDD2022* |
 | *e.g., MobileNetV2-SSD*| *Torchvision / TF* | *ImageNet / VOC* | *Baseline detection comparison* | *No / Feature extractor* |
+| `LightingCNN` | SafePath In-House | Scratch (3-stage CNN) | Lighting classification (well lit, dim, dark) | Trained on calibrated road patches |
 
 ---
 
