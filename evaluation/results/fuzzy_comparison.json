@@ -1,0 +1,113 @@
+{
+  "experiment_name": "fuzzy_safety_scoring_comparison",
+  "description": "5-Fold Cross-Validation benchmark comparing linear weighted sum, hand-crafted Mamdani fuzzy rules, and GA-tuned fuzzy model",
+  "random_seed": 42,
+  "n_splits": 5,
+  "total_evaluated_segments": 8,
+  "results": {
+    "weighted_sum_baseline": {
+      "mae": 19.985,
+      "mae_ci_95": [
+        12.8,
+        28.17
+      ],
+      "pearson_r": 0.9291,
+      "pearson_ci_95": [
+        0.808,
+        0.984
+      ],
+      "pearson_p_value": 0.00085,
+      "spearman_rho": 0.8982,
+      "spearman_ci_95": [
+        0.407,
+        1.0
+      ],
+      "spearman_p_value": 0.00244
+    },
+    "mamdani_fuzzy_baseline": {
+      "mae": 15.39,
+      "mae_ci_95": [
+        10.43,
+        19.97
+      ],
+      "pearson_r": 0.9762,
+      "pearson_ci_95": [
+        0.91,
+        1.0
+      ],
+      "pearson_p_value": 3e-05,
+      "spearman_rho": 0.9759,
+      "spearman_ci_95": [
+        0.726,
+        1.0
+      ],
+      "spearman_p_value": 3e-05
+    },
+    "ga_tuned_fuzzy_proposed": {
+      "mae": 13.752,
+      "mae_ci_95": [
+        9.45,
+        17.98
+      ],
+      "pearson_r": 0.9799,
+      "pearson_ci_95": [
+        0.934,
+        1.0
+      ],
+      "pearson_p_value": 2e-05,
+      "spearman_rho": 0.9701,
+      "spearman_ci_95": [
+        0.726,
+        1.0
+      ],
+      "spearman_p_value": 7e-05
+    }
+  },
+  "mae_reduction_vs_baseline_pct": 31.19,
+  "fold_breakdown": [
+    {
+      "fold": 1,
+      "test_size": 2,
+      "weighted_sum_mae": 29.683,
+      "mamdani_mae": 22.933,
+      "ga_tuned_mae": 20.433
+    },
+    {
+      "fold": 2,
+      "test_size": 2,
+      "weighted_sum_mae": 19.925,
+      "mamdani_mae": 19.675,
+      "ga_tuned_mae": 17.575
+    },
+    {
+      "fold": 3,
+      "test_size": 2,
+      "weighted_sum_mae": 16.983,
+      "mamdani_mae": 6.65,
+      "ga_tuned_mae": 5.95
+    },
+    {
+      "fold": 4,
+      "test_size": 1,
+      "weighted_sum_mae": 11.283,
+      "mamdani_mae": 17.083,
+      "ga_tuned_mae": 14.583
+    },
+    {
+      "fold": 5,
+      "test_size": 1,
+      "weighted_sum_mae": 15.417,
+      "mamdani_mae": 7.517,
+      "ga_tuned_mae": 7.517
+    }
+  ],
+  "overfitting_risk_analysis": {
+    "vulnerability_with_small_sample_size": "With sample sizes of N=8 to 30 road segments, unconstrained optimization algorithms (such as full gradient backpropagation on unconstrained neuro-fuzzy parameters) would rapidly overfit to idiosyncrasies of specific raters or single road stretches.",
+    "regularization_and_architectural_safeguards": [
+      "Constrained parameter space: We tune only 20 rule weights (bounded in [0.1, 1.8]) and 4 macro membership boundaries.",
+      "K-Fold Cross-Validation: Folds strictly partition training and testing segments; test segments are never seen during GA tuning.",
+      "Bounded Gene Drift: Membership parameters use hard upper/lower bounds preventing degenerate or inverted fuzzy membership sets."
+    ],
+    "viva_defense_summary": "The GA-tuned fuzzy model achieves generalization by refining rule priorities rather than memorizing data points."
+  }
+}

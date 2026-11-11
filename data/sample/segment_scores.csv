@@ -1,10 +1,9 @@
 segment_id,safety_score,level,top_factors,fired_rules,model_name
-seg_101,48.5,caution,"moderate hazard density; accident history","R2_moderate_hazard; R5_lit_night",anfis_tuned_fuzzy
-seg_102,32.0,risky,"unlit street; hazard presence; isolation","R1_night_unlit; R3_high_isolation",anfis_tuned_fuzzy
-seg_103,41.0,caution,"high accident hotspot proximity; potholes","R4_accident_hotspot; R5_lit_night",anfis_tuned_fuzzy
-seg_104,52.5,caution,"speed breaker present; high isolation","R3_high_isolation; R6_dusk_residential",anfis_tuned_fuzzy
-seg_105,82.0,safe,"daylight; well lit; low hazard density","R7_day_clear_primary",anfis_tuned_fuzzy
-seg_106,24.0,risky,"unlit street; high accident score; high isolation","R1_night_unlit; R3_high_isolation; R4_accident_hotspot",anfis_tuned_fuzzy
-seg_107,88.0,safe,"no hazards; day; low accident history","R7_day_clear_tertiary",anfis_tuned_fuzzy
-seg_108,74.5,safe,"well lit; low accident score; moderate traffic","R5_lit_dusk; R7_day_clear_primary",anfis_tuned_fuzzy
-
+seg_101,40.3,caution,night driving but mitigated by streetlights and nearby amenities; urban lit road with surface potholes requiring caution; moderate road hazards and accident exposure,R6_night_well_lit_connected; R16_well_lit_urban_medium_hazards; R5_moderate_hazard_cautious; R19_night_accident_hotspot; R3_accident_hotspot; R2_high_fresh_hazards; R7_high_hazard_confident,mamdani_fuzzy_baseline
+seg_102,26.0,risky,unlit street with heavy potholes or speed breakers at night; unlit night driving encountering active potholes or speed breakers; moderate road hazards and accident exposure,R21_night_dark_high_hazards; R13_night_dark_moderate_hazard; R5_moderate_hazard_cautious,mamdani_fuzzy_baseline
+seg_103,28.7,risky,passing accident blackspot during night hours; high accident hotspot proximity or severe crash history; night driving but mitigated by streetlights and nearby amenities,R19_night_accident_hotspot; R3_accident_hotspot; R6_night_well_lit_connected; R16_well_lit_urban_medium_hazards,mamdani_fuzzy_baseline
+seg_104,52.5,caution,unlit isolated road during twilight; isolated route with noticeable road damage,R22_dusk_dark_isolated; R18_high_isolation_moderate_hazards,mamdani_fuzzy_baseline
+seg_105,84.6,safe,"clear daylight visibility with minimal road hazards; daytime travel along historically safe, hazard-free segment",R4_day_clear_low_hazard; R9_day_safe_no_accidents,mamdani_fuzzy_baseline
+seg_106,28.2,risky,unlit street with high isolation at night; passing accident blackspot during night hours; high accident hotspot proximity or severe crash history,R1_night_unlit_isolated; R19_night_accident_hotspot; R3_accident_hotspot; R10_isolated_accident_prone; R13_night_dark_moderate_hazard; R18_high_isolation_moderate_hazards,mamdani_fuzzy_baseline
+seg_107,84.6,safe,"clear daylight visibility with minimal road hazards; daytime travel along historically safe, hazard-free segment; unverified older hazard reports on safe daytime road",R4_day_clear_low_hazard; R9_day_safe_no_accidents; R17_stale_hazards_low_accident; R12_slow_road_low_hazard,mamdani_fuzzy_baseline
+seg_108,80.3,safe,well lit dusk route with pristine accident record; urban lit road with surface potholes requiring caution,R20_clear_dusk_low_hazard; R16_well_lit_urban_medium_hazards,mamdani_fuzzy_baseline
