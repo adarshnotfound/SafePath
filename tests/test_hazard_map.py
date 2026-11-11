@@ -14,6 +14,12 @@ from hazard_map.living_map import (
     merge_detections_dbscan,
 )
 from hazard_map.evaluate import run_pipeline_and_evaluate
+from hazard_map.ga_optimizer import (
+    evaluate_scenario,
+    individual_to_config,
+    plot_ga_convergence_curve,
+    run_genetic_algorithm,
+)
 from hazard_map.simulated_drive import (
     add_gps_noise,
     generate_ground_truth_hazards,
@@ -256,6 +262,52 @@ class TestLivingHazardMap(unittest.TestCase):
             self.assertGreaterEqual(metrics.duplicate_merge_accuracy, 0.80)
             self.assertGreaterEqual(metrics.repair_detection_rate, 0.80)
             self.assertEqual(metrics.false_decay_rate, 0.0)
+
+
+class TestGADecayOptimizer(unittest.TestCase):
+    """Test suite verifying DEAP Genetic Algorithm decay rate optimization."""
+
+    def test_chromosome_mapping_and_bounds(self):
+        """Verify chromosome mapping to LivingMapConfig with gene clamping and integer rounding."""
+        ind = [0.05, 3.2, 0.45, 1.8, 0.80, 1.1]
+        cfg = individual_to_config(ind)
+        self.assertAlmostEqual(cfg.type_persistence["speed_breaker"].decay_rate, 0.05, places=2)
+        self.assertEqual(cfg.type_persistence["speed_breaker"].miss_threshold_k, 3)
+        self.assertAlmostEqual(cfg.type_persistence["pothole"].decay_rate, 0.45, places=2)
+        self.assertEqual(cfg.type_persistence["pothole"].miss_threshold_k, 2)
+        self.assertAlmostEqual(cfg.type_persistence["animal"].decay_rate, 0.80, places=2)
+        self.assertEqual(cfg.type_persistence["animal"].miss_threshold_k, 1)
+
+    def test_scenario_evaluation(self):
+        """Verify scenario fitness evaluation returns valid bounded metrics."""
+        cfg = LivingMapConfig.load()
+        metrics = evaluate_scenario(cfg, seed=42)
+        self.assertIn("fitness", metrics)
+        self.assertIn("f1_repair", metrics)
+        self.assertIn("retention_active", metrics)
+        self.assertTrue(0.0 <= metrics["fitness"] <= 1.0)
+        self.assertGreater(metrics["retention_active"], 0.80)
+
+    def test_ga_optimization_and_plot(self):
+        """Verify GA execution with DEAP, Hall of Fame convergence, and plot export."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            plot_path = Path(tmpdir) / "ga_plot.png"
+
+            results = run_genetic_algorithm(
+                train_seeds=[42],
+                test_seeds=[101],
+                pop_size=6,
+                generations=3,
+                random_seed=42,
+            )
+
+            self.assertIn("parameters", results)
+            self.assertIn("convergence_history", results)
+            self.assertEqual(len(results["convergence_history"]), 4)  # Gen 0, 1, 2, 3
+
+            plot_ga_convergence_curve(results["convergence_history"], plot_path)
+            self.assertTrue(plot_path.exists())
+            self.assertGreater(plot_path.stat().st_size, 1000)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,277 @@
+{
+  "parameters": [
+    {
+      "parameter": "speed_breaker_decay",
+      "hand_set_value": 0.02,
+      "ga_fitted_value": 0.0956,
+      "type": "float"
+    },
+    {
+      "parameter": "speed_breaker_k",
+      "hand_set_value": 3,
+      "ga_fitted_value": 2,
+      "type": "integer"
+    },
+    {
+      "parameter": "pothole_decay",
+      "hand_set_value": 0.55,
+      "ga_fitted_value": 0.75,
+      "type": "float"
+    },
+    {
+      "parameter": "pothole_k",
+      "hand_set_value": 1,
+      "ga_fitted_value": 1,
+      "type": "integer"
+    },
+    {
+      "parameter": "animal_decay",
+      "hand_set_value": 0.85,
+      "ga_fitted_value": 0.6798,
+      "type": "float"
+    },
+    {
+      "parameter": "animal_k",
+      "hand_set_value": 1,
+      "ga_fitted_value": 1,
+      "type": "integer"
+    }
+  ],
+  "training_performance_seed_set_1": {
+    "train_seeds": [
+      42,
+      101,
+      202
+    ],
+    "hand_set": {
+      "fitness_f1": 0.9333,
+      "repair_f1": 0.8889,
+      "retention_active": 1.0,
+      "repair_recall": 0.8333,
+      "repair_precision": 1.0
+    },
+    "ga_fitted": {
+      "fitness_f1": 0.9333,
+      "repair_f1": 0.8889,
+      "retention_active": 1.0,
+      "repair_recall": 0.8333,
+      "repair_precision": 1.0
+    }
+  },
+  "generalization_test_seed_set_2": {
+    "test_seeds": [
+      303,
+      404,
+      505
+    ],
+    "hand_set": {
+      "fitness_f1": 0.6,
+      "repair_f1": 0.5556,
+      "retention_active": 1.0,
+      "repair_recall": 0.5,
+      "repair_precision": 0.6667
+    },
+    "ga_fitted": {
+      "fitness_f1": 0.6,
+      "repair_f1": 0.5556,
+      "retention_active": 1.0,
+      "repair_recall": 0.5,
+      "repair_precision": 0.6667
+    }
+  },
+  "ga_settings": {
+    "population_size": 30,
+    "generations": 25,
+    "crossover_probability": 0.7,
+    "mutation_probability": 0.3,
+    "crossover_operator": "Blend Crossover (BLX-0.5) + Discrete Swap",
+    "mutation_operator": "Gaussian Perturbation (sigma=0.08) + Step Mutation",
+    "selection_operator": "Tournament Selection (tournsize=3)",
+    "elitism": "Hall of Fame (size=2)",
+    "random_seed": 42
+  },
+  "convergence_history": [
+    {
+      "generation": 0,
+      "max": 0.9333333333333332,
+      "mean": 0.786666666666667,
+      "min": 0.26666666666666666,
+      "std": 0.09948013015821952
+    },
+    {
+      "generation": 1,
+      "max": 0.9333333333333332,
+      "mean": 0.8266666666666668,
+      "min": 0.5333333333333333,
+      "std": 0.07999999999999993
+    },
+    {
+      "generation": 2,
+      "max": 0.9333333333333332,
+      "mean": 0.8800000000000001,
+      "min": 0.8000000000000002,
+      "std": 0.06531972647421797
+    },
+    {
+      "generation": 3,
+      "max": 0.9333333333333332,
+      "mean": 0.92,
+      "min": 0.8000000000000002,
+      "std": 0.03999999999999993
+    },
+    {
+      "generation": 4,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    },
+    {
+      "generation": 5,
+      "max": 0.9333333333333332,
+      "mean": 0.92,
+      "min": 0.8000000000000002,
+      "std": 0.03999999999999993
+    },
+    {
+      "generation": 6,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    },
+    {
+      "generation": 7,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    },
+    {
+      "generation": 8,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.02393406580948663
+    },
+    {
+      "generation": 9,
+      "max": 0.9333333333333332,
+      "mean": 0.92,
+      "min": 0.8000000000000002,
+      "std": 0.03999999999999993
+    },
+    {
+      "generation": 10,
+      "max": 0.9333333333333332,
+      "mean": 0.9266666666666666,
+      "min": 0.8000000000000002,
+      "std": 0.026387426860084214
+    },
+    {
+      "generation": 11,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    },
+    {
+      "generation": 12,
+      "max": 0.9333333333333332,
+      "mean": 0.9333333333333333,
+      "min": 0.9333333333333332,
+      "std": 1.1102230246251565e-16
+    },
+    {
+      "generation": 13,
+      "max": 0.9333333333333332,
+      "mean": 0.92,
+      "min": 0.8000000000000002,
+      "std": 0.03999999999999993
+    },
+    {
+      "generation": 14,
+      "max": 0.9333333333333332,
+      "mean": 0.9333333333333333,
+      "min": 0.9333333333333332,
+      "std": 1.1102230246251565e-16
+    },
+    {
+      "generation": 15,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.023934065809486628
+    },
+    {
+      "generation": 16,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.023934065809486628
+    },
+    {
+      "generation": 17,
+      "max": 0.9333333333333332,
+      "mean": 0.92,
+      "min": 0.8000000000000002,
+      "std": 0.03999999999999993
+    },
+    {
+      "generation": 18,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.023934065809486628
+    },
+    {
+      "generation": 19,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.023934065809486628
+    },
+    {
+      "generation": 20,
+      "max": 0.9333333333333332,
+      "mean": 0.9333333333333333,
+      "min": 0.9333333333333332,
+      "std": 1.1102230246251565e-16
+    },
+    {
+      "generation": 21,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.02393406580948663
+    },
+    {
+      "generation": 22,
+      "max": 0.9333333333333332,
+      "mean": 0.9222222222222223,
+      "min": 0.8000000000000002,
+      "std": 0.03478327964999667
+    },
+    {
+      "generation": 23,
+      "max": 0.9333333333333332,
+      "mean": 0.9288888888888889,
+      "min": 0.8000000000000002,
+      "std": 0.02393406580948663
+    },
+    {
+      "generation": 24,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    },
+    {
+      "generation": 25,
+      "max": 0.9333333333333332,
+      "mean": 0.9244444444444445,
+      "min": 0.8000000000000002,
+      "std": 0.03325917677132386
+    }
+  ]
+}

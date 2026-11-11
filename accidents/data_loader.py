@@ -214,3 +214,4 @@ def load_accidents_from_csv(csv_path: Path) -> List[AccidentPoint]:
                 source_country=row.get("source_country", "India"),
             ))
     return accidents
+
