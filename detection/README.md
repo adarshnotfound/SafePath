@@ -56,3 +56,4 @@ pytest -v detection/test_detection.py
 - **Why YOLOv8-nano?**: Anchor-free head reduces hyperparameter tuning for irregular aspect ratios (e.g. transverse speed breakers vs circular potholes), with ~3.2M parameters (~6.2 MB) ideal for dashcam edge inference.
 - **Why evaluate lighting?**: Poor street lighting directly degrades perception recall; feeding lighting status to Module 3 (fuzzy logic) allows the system to lower safety confidence in dark areas.
 - **Handling False Positives**: Shadows often mimic potholes in luminance; downstream Module 2 (Living Hazard Map) uses temporal clustering across drives to reject transient false detections.
+

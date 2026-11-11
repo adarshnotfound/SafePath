@@ -9,7 +9,11 @@ Follows Section 4.1 of the SafePath Specification:
 from pathlib import Path
 from typing import Dict, Generator, List, Optional, Tuple, Union
 
-import cv2
+try:
+    import cv2
+except ImportError:
+    cv2 = None
+
 import numpy as np
 
 # Default luminance thresholds (0-255 scale)
@@ -49,8 +53,11 @@ def estimate_lighting(
         return "dark", 0.0
 
     if len(frame.shape) == 3 and frame.shape[2] == 3:
-        # Standard conversion to grayscale: Y = 0.299*R + 0.587*G + 0.114*B
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        if cv2 is not None:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        else:
+            # Fallback using standard Rec. 601 luma weights: Y = 0.114*B + 0.587*G + 0.299*R
+            gray = 0.114 * frame[:, :, 0] + 0.587 * frame[:, :, 1] + 0.299 * frame[:, :, 2]
     else:
         gray = frame
 
@@ -96,6 +103,11 @@ def sample_frames_from_video(
     video_path = Path(video_path)
     if not video_path.exists():
         raise FileNotFoundError(f"Video file not found: {video_path}")
+
+    if cv2 is None:
+        raise ImportError(
+            "OpenCV is required for video decoding. Install via: pip install opencv-python-headless"
+        )
 
     cap = cv2.VideoCapture(str(video_path))
     if not cap.isOpened():
@@ -165,6 +177,11 @@ def sample_frames_from_image_list(
     List[dict]
         List of frame metadata dicts with lighting estimates.
     """
+    if cv2 is None:
+        raise ImportError(
+            "OpenCV is required for image reading. Install via: pip install opencv-python-headless"
+        )
+
     results = []
     for idx, path in enumerate(image_paths, start=1):
         p = Path(path)
