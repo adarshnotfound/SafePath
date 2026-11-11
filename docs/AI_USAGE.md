@@ -13,6 +13,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
 | 2026-11-11 | Antigravity | `/hazard_map` | Task B2: DBSCAN projected coordinate clustering, living map per-drive update, K-miss decay, and evaluation | Member B (Ankit) |
+| 2026-11-11 | Antigravity | `/accidents` | Task B3: Accident hotspot clustering (DBSCAN vs Fuzzy C-Means), parameter sweeps, silhouette evaluation, Folium visualization, and provenance tracking | Member B (Ankit) |
 
 ---
 
@@ -32,6 +33,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | *e.g., OpenStreetMap* | *OSMnx / Overpass* | *India (Chosen city)* | *Road network graph & proxies* | `real` |
 | *e.g., RDD2022* | *CRDDC 2022* | *India* | *Pothole detection training* | `real` |
 | *e.g., UK STATS19* | *data.gov.uk* | *United Kingdom* | *Accident risk model fallback* | `substitute` |
+| Karnataka State Blackspots | data.gov.in / KSP | India (Bengaluru) | Accident hotspot clustering & risk training | `real` |
 | *e.g., Simulated Drives*| *In-house generator*| *Synthetic* | *Merge/decay timeline validation* | `simulated` |
 
 ---
