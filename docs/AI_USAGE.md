@@ -11,6 +11,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-01 | Antigravity | All (Skeleton) | Created repository skeleton, Section 8 contracts, CI workflow | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
+| 2026-11-11 | Antigravity | `/fuzzy`, `/survey`, `/evaluation` | Implemented Mamdani fuzzy system, weighted baseline, GA tuning, survey pipeline, ablation | Team Owner C |
 
 ---
 
