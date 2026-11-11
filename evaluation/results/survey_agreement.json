@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "total_rows_read": 10,
+  "valid_ratings": 10,
+  "skipped_rows": 0,
+  "unique_segments": 8,
+  "unique_raters": 4,
+  "inter_rater_agreement": {
+    "num_segments": 8,
+    "mean_std_per_segment": 0.354,
+    "mean_pairwise_abs_diff": 0.5,
+    "percent_exact_agreement": 50.0,
+    "icc_approx": 0.787
+  },
+  "output_path": "C:\\Users\\Sandip\\SafePath\\survey\\cleaned_survey_ratings.csv"
+}
