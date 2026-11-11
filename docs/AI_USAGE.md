@@ -12,6 +12,7 @@ This document tracks all external AI tools, coding assistants, pretrained models
 | 2026-11-01 | Antigravity IDE | `/hazard_map/simulated_drive.py` | Task B1: Multi-drive simulated detection generator with GPS noise, lifecycles, and metrics | Member B (Ankit) |
 | 2026-11-11 | Antigravity | `/detection` | Implemented frame sampling, lighting estimator, baseline vs YOLOv8-nano, benchmark evaluation | Team Owner A |
 | 2026-11-11 | Antigravity | `/detection`, `/docs` | Implemented RDD2022 dataset preparation pipeline, VOC-to-YOLO conversion, and Data Card | Team Owner A |
+| 2026-11-11 | Antigravity | `/hazard_map` | Task B2: DBSCAN projected coordinate clustering, living map per-drive update, K-miss decay, and evaluation | Member B (Ankit) |
 
 ---
 

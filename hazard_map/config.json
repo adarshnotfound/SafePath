@@ -1,0 +1,31 @@
+{
+  "dbscan_eps_meters": 7.0,
+  "dbscan_min_samples": 1,
+  "association_radius_meters": 25.0,
+  "coverage_radius_meters": 45.0,
+  "default_miss_threshold_k": 2,
+  "confidence_rise_factor": 0.6,
+  "max_confidence": 0.99,
+  "min_active_confidence": 0.45,
+  "min_active_freshness": 0.20,
+  "type_persistence": {
+    "speed_breaker": {
+      "decay_rate": 0.02,
+      "freshness_decay_rate": 0.04,
+      "miss_threshold_k": 3,
+      "description": "Permanent infrastructure, very slow decay"
+    },
+    "pothole": {
+      "decay_rate": 0.55,
+      "freshness_decay_rate": 0.60,
+      "miss_threshold_k": 1,
+      "description": "Semi-permanent road surface defect, medium decay upon repair"
+    },
+    "animal": {
+      "decay_rate": 0.85,
+      "freshness_decay_rate": 0.85,
+      "miss_threshold_k": 1,
+      "description": "Transient living obstacle, rapid decay once departed"
+    }
+  }
+}
