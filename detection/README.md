@@ -57,7 +57,13 @@ python -m detection.process_drive
 ```
 Samples video frames (1-2s intervals), estimates lighting, projects detections onto a route with 5-15m GPS noise, and exports to `detections.csv`.
 
-### 5. Run Unit & Contract Tests
+### 5. Run Lighting Classification Benchmark (Section 3 & 4.1 Stretch Goal)
+```bash
+python -m detection.evaluate_lighting
+```
+Compares scalar mean luminance thresholding against `LightingCNN` on glare resistance, logging results to `evaluation/results/lighting_comparison.json`.
+
+### 6. Run Unit & Contract Tests
 ```bash
 pytest -v detection/
 ```
@@ -67,5 +73,6 @@ pytest -v detection/
 ## Viva Talking Points
 - **Why YOLOv8-nano?**: Anchor-free head reduces hyperparameter tuning for irregular aspect ratios (e.g. transverse speed breakers vs circular potholes), with ~3.2M parameters (~6.2 MB) ideal for dashcam edge inference.
 - **Why evaluate lighting?**: Poor street lighting directly degrades perception recall; feeding lighting status to Module 3 (fuzzy logic) allows the system to lower safety confidence in dark areas.
+- **Why a Lighting CNN?**: Scalar mean luminance gets tricked by oncoming vehicle headlight glares on dark roads (raising the average and masking unlit asphalt). `LightingCNN` learns spatial context and correctly preserves the `dark` classification.
 - **Handling False Positives**: Shadows often mimic potholes in luminance; downstream Module 2 (Living Hazard Map) uses temporal clustering across drives to reject transient false detections.
 

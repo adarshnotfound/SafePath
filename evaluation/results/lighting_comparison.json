@@ -1,0 +1,35 @@
+{
+  "experiment_name": "Road Lighting Classification: Baseline vs Proposed CNN",
+  "timestamp_iso": "2026-11-11T14:23:14Z",
+  "random_seed": 42,
+  "total_test_samples": 60,
+  "classes": [
+    "well lit",
+    "dim",
+    "dark"
+  ],
+  "baseline": {
+    "model_name": "Mean Luminance Thresholding (Scalar Grayscale)",
+    "accuracy": 0.8833,
+    "macro_f1": 0.8796,
+    "macro_precision": 0.9136,
+    "macro_recall": 0.8833,
+    "model_size_mb": 0.0,
+    "inference_time_ms": 0.073,
+    "vulnerability_note": "Averages global intensity; misled into 'dim/well lit' by localized high-beam headlight glare in dark unlit scenes."
+  },
+  "proposed": {
+    "model_name": "LightingCNN (3-Stage Feature Extractor)",
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "model_size_mb": 0.12,
+    "inference_time_ms": 2.568,
+    "strength_note": "Learns spatial context; correctly identifies nocturnal environments even in presence of localized high-beam headlight artifacts."
+  },
+  "comparison_delta": {
+    "accuracy_delta": "+11.7%",
+    "macro_f1_delta": "+12.0%"
+  }
+}

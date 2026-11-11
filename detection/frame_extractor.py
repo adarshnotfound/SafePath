@@ -26,14 +26,15 @@ def estimate_lighting(
     frame: np.ndarray,
     dark_thresh: float = DARK_THRESHOLD,
     dim_thresh: float = DIM_THRESHOLD,
+    method: str = "threshold",
 ) -> Tuple[str, float]:
-    """Estimate lighting conditions of an image frame based on mean luminance.
+    """Estimate lighting conditions of an image frame.
 
-    Converts the frame to grayscale to calculate average pixel intensity
-    (0.0 - 255.0) and assigns a qualitative bucket:
-    - 'dark': luminance < dark_thresh
-    - 'dim': dark_thresh <= luminance < dim_thresh
-    - 'well lit': luminance >= dim_thresh
+    Supports:
+    - 'threshold' (Baseline): Grayscale mean luminance bucketed into
+      'well lit', 'dim', or 'dark'.
+    - 'cnn' (Proposed Stretch Goal): Lightweight convolutional neural network
+      evaluating spatial luminance representations.
 
     Parameters
     ----------
@@ -43,14 +44,26 @@ def estimate_lighting(
         Upper luminance boundary for 'dark' category (default 50.0).
     dim_thresh : float
         Upper luminance boundary for 'dim' category (default 120.0).
+    method : str
+        Estimation approach ('threshold' | 'cnn').
 
     Returns
     -------
     Tuple[str, float]
-        (lighting_condition, mean_luminance)
+        (lighting_condition, mean_luminance_or_confidence)
     """
     if frame is None or frame.size == 0:
         return "dark", 0.0
+
+    if method == "cnn":
+        try:
+            from detection.lighting_cnn import RoadLightingClassifier
+
+            classifier = RoadLightingClassifier()
+            cond, conf, _ = classifier.predict(frame)
+            return cond, conf
+        except Exception:
+            pass  # Fall through to baseline thresholding
 
     if len(frame.shape) == 3 and frame.shape[2] == 3:
         if cv2 is not None:
