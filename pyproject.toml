@@ -7,5 +7,5 @@ select = ["E", "F", "I"]
 ignore = ["E501"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "detection"]
+testpaths = ["tests", "detection", "accidents"]
 pythonpath = ["."]
